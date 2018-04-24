@@ -10,7 +10,7 @@ namespace Mytest0329.App_Code
 {
     public static class SqlHelper
     {
-        public static string strConn = @"data source = WINDOWS-PIU20LO\SQLEXPRESS; initial catalog = MVCTest; user id = wsn; password = Wsn@2145127";
+        public static string strConn = @"data source = @hostname initial catalog = @db; user id = @user; password = @pwd";
 
         public static bool StartTran(String sqlStr)
         {

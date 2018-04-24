@@ -9,7 +9,7 @@ namespace Mytest0329.App_Code
 {
     public static class MetaHelper
     {
-        public static String metaConn = @"data source = WINDOWS-PIU20LO\SQLEXPRESS; initial catalog = metadata; user id = wsn; password = Wsn@2145127";
+        public static String metaConn = @"data source = @hostname; initial catalog = @db; user id = @id; password = @password";
 
         /// <summary>
         /// 维护元数据库的数据库表
