@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0048)javascript:void(0) -->
+<html lang="en">
+<!-- Mirrored from condorthemes.com/cleanzone/ by HTTrack Website Copier/3.x [XR&CO'2013], Mon, 31 Mar 2014 14:31:31 GMT -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>报表</title>
+
+    @Styles.Render("~/Content/layout")
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .jqstooltip {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            visibility: hidden;
+            background: rgb(0, 0, 0) transparent;
+            background-color: rgba(0,0,0,0.6);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+            color: white;
+            font: 10px arial, san serif;
+            text-align: left;
+            white-space: nowrap;
+            padding: 5px;
+            border: 1px solid white;
+            z-index: 10000;
+        }
+
+        .jqsfield {
+            color: white;
+            font: 10px arial, san serif;
+            text-align: left;
+        }
+    </style>
+</head>
+<body style="opacity: 1; margin-left: 0px;">
+    <!-- Fixed navbar -->
+    <div id="head-nav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="fa fa-gear"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)"><span>Ocean-吴胜男</span></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="javascript:void(0)">报表</a></li>
+                    <li><a href="javascript:void(0)about">看板</a></li>
+                    <li><a href="javascript:void(0)about">数据源</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right user-nav">
+                    <li class="dropdown profile_menu">
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><img alt="Avatar" src="~/images/avatar2.jpg"><span>吴胜男</span> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)">个人中心</a></li>
+                            <li><a href="javascript:void(0)">消息</a></li>
+                            <li class="divider"></li>
+                            <li><a href="javascript:void(0)">退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse animate-collapse -->
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/layout")
+    <script>
+        $(document).ready(function () {
+            //initialize the javascript
+            App.init();
+            App.dashBoard();
+
+            introJs().setOption('showBullets', false).start();
+
+        });
+    </script>
+    <div id="cl-wrapper" class="fixed-menu">
+        @RenderBody()
+    </div>
+</body>
+</html>

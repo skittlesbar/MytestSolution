@@ -1,0 +1,215 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index_EasyUI</title>
+</head>
+<body>
+    <div>
+        @{
+        ViewBag.Title = "djk8888";
+        }
+        <link href="http://www.jeasyui.com/easyui/themes/default/easyui.css" rel="stylesheet" />
+        <link href="http://www.jeasyui.com/easyui//themes/icon.css" rel="stylesheet" />
+        <script src="http://www.jeasyui.com/easyui/jquery.min.js"></script>
+        <script src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+        <script src="~/ui/layui/layui.js"></script>
+        <script src="~/ui/layui/lay/modules/tree.js"></script>
+        <script src="~/ui/layui/lay/modules/layer.js"></script>
+        <link href="~/ui/layui/css/layui.css" rel="stylesheet" />
+        <link href="~/ui/layui/css/modules/code.css" rel="stylesheet" />
+        <script>
+            var data = [{
+                name: "传智播客",
+                url: "http://www.itcast.cn",
+                type: "IT最强培训机构"
+            }, {
+                name: "黑马程序员",
+                url: "http://www.itheima.com",
+                type: "大学生IT培训机构"
+            }, {
+                name: "传智前端学院",
+                url: "http://web.itcast.cn",
+                type: "前端的黄埔军校"
+            }];
+            $(document).ready(function () {
+                //第一种：动态创建表格的方式，使用拼接html的方式 （推荐）
+                var html = "<tr>";
+                for (var i = 0; i < data.length; i++) {
+                    html += "<tr>";
+                    html += "<td>" + data[i].name + "</td>"
+                    html += "<td>" + data[i].url + "</td>"
+                    html += "<td>" + data[i].type + "</td>"
+                    html += "</tr>";
+                }
+                $("#table").html(html);
+            });
+        </script>
+
+        <script type="text/javascript">
+
+            $(function () {
+                var filename = "";
+                //设置easyui-filebox
+                $("#file1").filebox({
+                    //required: true,//是否必填
+                    //multiple: true,//是否多选（默认false,单选）
+                    //buttonAlign: 'left',//按钮出现的位置(默认right)
+                    width: '300px',//宽度
+                    prompt: '选择文件...',//提示信息
+                    buttonText: '选择',//按钮文字
+                    validType: ['fileSize[1024,"kb"]'],//文件大小限制（好像没卵用）
+                    accept: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel',//限制文件类型（也好像没卵用）
+                    onChange: function () {
+                        $("#btnUpload").hide();//隐藏上传按钮
+                        //判断选择的文件是不是Excel
+                        var temp = $("#file1").filebox('getValue');
+                        if (temp != '') {
+                            var arr1 = temp.split("\\");
+                            var arr = arr1[arr1.length - 1].split('.');
+                            filename = arr[0];
+                            if (arr.length > 1) {
+                                var expanded_name = arr[arr.length - 1].toLowerCase();//取得文件扩展名
+                                if (expanded_name == "xls" || expanded_name == "xlsx") {//确实是Excel文件
+                                    //判断文件大小
+                                    var f = document.getElementById("filebox_file_id_2").files;//用F12查看easyui生成的file控件的id
+                                    var size = f[0].size; //单位byte
+                                    var size = (size / 1024).toFixed(2);//单位kb
+                                    var maxFileSize = 1024;//1mb=1024kb
+                                    if (size > maxFileSize) {
+                                        $("#btnUpload").hide();//隐藏上传按钮
+                                        alert("文件大小：" + size + "KB,超过最大限制：" + maxFileSize + "KB");
+                                        $("#file1").filebox('reset');
+                                        return;
+                                    }
+                                    else {
+                                        $("#btnUpload").show();//显示上传按钮准备上传
+                                    }
+                                }
+                                else {//选择了其他类型的文件
+                                    $("#btnUpload").hide();//隐藏上传按钮
+                                    alert("请选择Excel文件!");
+                                    $("#file1").filebox('reset');
+                                    return;
+                                }
+                            }
+                            else {//选择了无扩展名的文件
+                                $("#btnUpload").hide();
+                                alert("请选择Excel文件!!");
+                                $("#file1").filebox('reset');
+                                return;
+                            }
+                        }
+                    },
+                });
+                //上传文件到服务器：
+                $("#btnUpload").click(function () {
+                    layer.msg('文件上传中', {
+                        icon: 16
+                        , shade: 0.01
+                    });
+                    $('#fm').form('submit', {
+                        url: '/Easyui/UploadExcel',
+                        success: function (result) {
+                            layer.closeAll("loading");
+                            var obj = JSON.parse(result);
+                            try {
+                                if (obj.status==="error") {
+                                    layer.msg("文件解析失败，请检查选中的文件是否符合要求", { icon: 5 });
+                                    return;
+                                }
+                            }
+                            catch (err) {
+                                ;
+                            }
+                            // 生成表格内容
+                            //
+                            var table = createTable(obj);
+                            //页面层-自定义
+                            showtable(table);
+                            //$("#btnUpload").hide();//隐藏上传按钮
+                        },
+                        error: function (data) {
+                            layer.closeAll("loading");
+                            layer.msg("网络错误，请检查你的网络连接", { icon: 5 });
+                        }
+                    });
+                    $("#js_meta_calcle").click(function () {
+                        alert("点击取消按钮");
+                    })
+                });
+
+                function createTable(obj) {
+                    var html = "<form action='SaveExcel' method='POST'>\
+                                    <div>\
+                                        <span>请输入表名：</span><input type='text' name='tablename' value="+ filename+"><span id='tn_tips' style='display:none'>表名不能为空</span>\
+                                    </div>\
+                                    <table>\
+                                        <thead>\
+                                            <th>原始字段</th>\
+                                            <th>自定义字段</th>\
+                                            <th>类型</th>\
+                                        </thead>\
+                                        <tbody>";
+                    for (var key in obj) {
+                        html += "<tr>\
+                                    <td><input name='name' disable value="+ key + "></td>\
+                                    <td><input name='self_name' type='text' value="+ key + "></td>\
+                                    <td>\
+                                        <select name='type'>"+ setOption(obj[key]) + "</select >\
+                                    </td>\
+                                </tr>";
+                    }
+                    html += "</tbody></table><button id='js_meta_submit' type='submit' class='button btn-primary'>提交</button></form>";
+                    return html;
+                }
+                function setOption(value) {
+                    ans = ["<option value='int'>整数</option>", "<option value = 'decimal' > 小数</option >", "<option value='nvarchar(max)'>文本</option>", "<option value='date'>日期</option>", "<option value='datetime'>时间</option>"];
+                    ans_select = ["<option value='int' selected = 'selected'>整数</option>", "<option value = 'decimal' selected = 'selected' > 小数</option >", "<option value='nvarchar(max)' selected = 'selected'>文本</option>", "<option value='date' selected = 'selected'>日期</option>", "<option value='datetime' selected = 'selected'>时间</option>"];
+                    var options = "";
+                    for (var i = 0; i < ans.length; i++) {
+                        options += (ans[i].indexOf(value) > 0 ? ans_select[i] : ans[i]);
+                    }
+                    return options;
+                }
+                function showtable(table) {
+                    layer.open({
+                        type: 1,
+                        skin: 'layui-layer-rim', //加上边框
+                        area: ['900px', '500px'], //宽高
+                        content: table,
+                        scrollbar: false
+                    });
+                }
+            });
+        </script>
+        <h2>用easyui-filebox上传Excel文件(ASP.NET MVC)</h2>
+        <form id="fm" method="post" enctype="multipart/form-data">
+            <input id="file1" class="easyui-filebox" name="file1" />
+            <input type="button" id="btnUpload" value="上传" style="display:none;" />
+        </form>
+    </div>
+    <div>
+        <ul id="demo"></ul>
+        <script>
+            layui.tree({
+                //传入元素选择器
+                elem: '#demo' , nodes://节点（可以点左侧箭头，也可以双击标题）
+                    [
+                        { name: '父节点1', children: [{ name: '子节点11' }, { name: '子节点12' }] }, 
+                        { name: '父节点2', children: [{ name: '子节点21', children: [{ name: '子节点211' }] }] }
+                    ]
+            });
+        </script>
+    </div>
+
+    <div id="table">
+    </div>
+</body>
+</html>

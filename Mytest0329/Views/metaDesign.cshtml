@@ -1,0 +1,1159 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta name="renderer" content="webkit">
+
+    <link rel="dns-prefetch" href="//s1.bdp.cn/">
+
+    <link id="J_favicon_ico" rel="shortcut icon" href="//m1.bdp.cn/favicon.ico?v=3" type="image/x-icon">
+    <script type="text/javascript" data-fixed="true">!function () { function e() { var e = function () { var e = navigator.userAgent, i = /(?:Windows Phone)/.test(e), t = /(?:SymbianOS)/.test(e) || i, n = /(?:Android)/.test(e), o = /(?:Firefox)/.test(e), s = (/(?:Chrome|CriOS)/.test(e), /(?:iPad|PlayBook)/.test(e) || n && !/(?:Mobile)/.test(e) || o && /(?:Tablet)/.test(e)), d = /(?:iPhone)/.test(e) && !s, r = d || n || i || t, a = !d && !n && !t; return { isTablet: s, isIPhone: d, isAndroid: n, isMobile: r, isPc: a } }(); return e.isMobile && window.innerWidth <= 667 } if (e()) { var i = location.href, t = "/h5_dashboard/index.html#/"; i.indexOf("/dash_edit/") > -1 && (t += i.slice(i.indexOf("/dash_edit/")).replace("/dash_edit", "project")), window.location.href = t } }()</script>
+    <title>BDP个人版－零门槛数据分析平台</title>
+
+
+    <script data-fixed="true" id="J_i18n" src="//m1.bdp.cn/static/i18n/locale.zh.js?v=3261edf5"></script>
+
+    <link type="text/css" rel="stylesheet" href="//m1.bdp.cn/static/pkg/app-bundle_9dafe1c.css">
+    <script data-position="head">!function () { function e(e) { return document.cookie.length > 0 && (c_start = document.cookie.indexOf(e + "="), c_start != -1) ? (c_start = c_start + e.length + 1, c_end = document.cookie.indexOf(";", c_start), c_end == -1 && (c_end = document.cookie.length), unescape(document.cookie.substring(c_start, c_end))) : "" } var t = e("locale") || "zh"; window.BDPThemes = { themes: [{ name: "zh" == t ? "星空蓝" : "Starry Blue", filename: "dark", fileUrl: "/static/theme/dark/css/dark.css", svgUrl: "//m1.bdp.cn/static/theme/dark/svg-build/sprite_4b838c6.css", id: 1, isInUsed: !1, backgroundImg: "dark-bg-img" }, { name: "zh" == t ? "典雅白" : "Elegant White", filename: "light", fileUrl: "/static/theme/light/css/light.css", svgUrl: "//m1.bdp.cn/static/theme/light/svg-build/sprite_1365651.css", id: 2, isInUsed: !1, backgroundImg: "light-bg-img" }], bdpThemeIdCookieName: "theme_id", themeLinkCssId: "J-theme-linek-css" }; for (var i = window.BDPThemes.themes, s = i[0].fileUrl, n = parseInt(e(window.BDPThemes.bdpThemeIdCookieName) || 2), c = (i[0].svgUrl, i.length - 1); c >= 0; c--)if (n == i[c].id) { window.usedThemeId = i[c].id, s = i[c].fileUrl, document.documentElement.className += " theme-" + i[c].filename; break } }()</script>
+    <style></style>
+    <script src="//sdk.bdp.cn/bdpa-sdk-js.js?_t=1524314727688"></script>
+    <style id="watermarkStyle">
+        .water-mark-dark {
+            background: none;
+        }
+
+        .water-mark-white {
+            background: none;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8" async="" src="//m1.bdp.cn/dist/6.chunk-cc89ac.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" src="//m1.bdp.cn/dist/14.chunk-cc89ac.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="//m1.bdp.cn/static/js/lib/clipboard.min_3e5e0fa.js"></script>
+    <script type="text/javascript" charset="utf-8" async="" src="//m1.bdp.cn/dist/2.chunk-cc89ac.js"></script>
+    <style type="text/css" id="corner_style">
+        .gc-corner-triangle-normal {
+            border-style: solid;
+            border-left-color: #DFE4E7 !important;
+            border-right-color: #DFE4E7 !important;
+            border-bottom-color: #DFE4E7 !important;
+            border-top-color: #DFE4E7 !important;
+            background-color: #DFE4E7 !important;
+        }
+    </style>
+    <script charset="UTF-8" type="text/javascript" src="//m1.bdp.cn/static/js/lib/colorPicker/spectrum_fd9f9f3.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="//m1.bdp.cn/static/js/lib/codemirror/codemirror-5.24.2_8464181.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="//m1.bdp.cn/static/js/lib/bdpFormula/bdp-codemirror_a49746f.js"></script>
+</head>
+<body class="zh route-chart_edit hide-bdp-header" ng-class="{
+      'hide-bdp-header' : !show_bdp_header,
+      'dash-template' : view= = ='dash_tpl' ,
+      'personal-guide' : enterprise_type= =3 &amp;&amp; guide>
+    0,
+    'BDP-THIRD-IFRAME': isThirdIframe === true,
+    'adv-dash-edit': !!advDashEditPage
+    }" style="cursor: auto;">
+    <header class="bdp-header-wraper clearfix ng-scope" ng-controller="mainNavCtrl" bindonce="">
+        <!-- ngIf: enterprise_type != 3 -->
+        <!-- ngIf: enterprise_type == 3 --><h1 class="logo-personal clearfix ng-scope" ng-if="enterprise_type == 3">
+            <a class="logo-link" href="/home.html">
+                BDP
+            </a>
+        </h1><!-- end ngIf: enterprise_type == 3 -->
+        <nav class="nav-wrap">
+            <ul class="nav-function clearfix">
+                <!-- ngIf: permision.navDashboard -->
+                <li class="nav-item ng-scope active" ng-if="permision.navDashboard" ng-class="{active: view == 'dashboard'|| view=='chart_edit'}" ng-click="click_show_view('dashboard')">
+                    <div class="nav-item-title">仪表盘</div>
+                </li><!-- end ngIf: permision.navDashboard -->
+                <!-- ngIf: permision.navWorktable -->
+                <li class="nav-item ng-scope" ng-if="permision.navWorktable" ng-class="{active: view == 'worktable'}" ng-click="click_show_view('data_source')">
+                    <div class="nav-item-title">工作表</div>
+                </li><!-- end ngIf: permision.navWorktable -->
+                <!-- ngIf: permision.navDatabase -->
+                <li class="nav-item nav-datasource ng-scope" ng-if="permision.navDatabase" ng-class="{active: view == 'database'}" ng-click="click_show_view('database')">
+                    <div class="nav-item-title">数据源</div>
+                </li><!-- end ngIf: permision.navDatabase -->
+                <!-- ngIf: permision.navAccount -->
+                <!-- ngIf: permision.navTpl -->
+                <!-- ngIf: permision.newTraining -->
+                <!-- ngIf: enterprise_type == 7 -->
+                <!-- ngIf: permision.navDataScreen -->
+            </ul>
+        </nav>
+        <!-- ngIf: !permision.personalSetIcon -->
+        <!-- ngIf: permision.personalSetIcon --><div class="bdp-hd-set personal-hd-set ng-scope" ng-if="permision.personalSetIcon">
+            <ul class="clearfix">
+                <!-- ngIf: personalInfo.activity11 -->
+                <!-- ngIf: !permision.isCloudMarket -->
+                <li class="hd-set-item pl8 pr8 mr8 ng-scope" ng-if="!permision.isCloudMarket" ng-click="navMemUpgradeLog('nav');">
+                    <a class="display-inline-block font-w-b cr-bdp text-decoration-hover-underline" href="/member.html" target="_blank" ng-show="memberData.vipLevel == 0">升级会员</a>
+                    <a class="display-inline-block font-w-b cr-bdp text-decoration-hover-underline ng-hide" href="/member-pay.html#?vipLevel=0" target="_blank" ng-show="memberData.vipLevel > 0">升级/续费</a>
+                </li><!-- end ngIf: !permision.isCloudMarket -->
+                <li class="hd-set-item pl8 pr8 pr" ng-class="{'active':view == 'personal'}" ng-hide="enterprise_type == 5 || enterprise_type == 6">
+                    <div class="account-info" click-outside="accountInfoSetting = false" outside-active="accountInfoSetting" outside-if-not="J_account_setting_btn">
+
+                        <div class="display-inline-block nav-user-logo after-triangle pr" id="J_account_setting_btn" ng-click="accountInfoSetting = !accountInfoSetting" ng-class="{'with-mem-gold': memberData.vipLevel == 2, 'with-mem-silver': memberData.vipLevel == 1}" title="账号设置">
+                            <img class="user-logo-img" ng-src="/static/images/user/1-head-pic.png" width="22" src="/static/images/user/1-head-pic.png">
+                        </div>
+
+                        <div class="box-account-tip account-info-content J_user_setting_account ng-hide" ng-show="accountInfoSetting &amp;&amp; !permision.isAuthorized &amp;&amp; permision.accountDetailSetting">
+                            <div class="top-split-line user-info clearfix">
+                                <div class="user-logo" ng-click="modifyPic()">
+                                    <img class="user-logo-img" ng-src="/static/images/user/1-head-pic.png" src="/static/images/user/1-head-pic.png">
+                                </div>
+                                <div class="user-content">
+                                    <div>
+                                        <span class="user-contact nowrap ng-binding" title="BDP用户" ng-bind="user.contact">BDP用户</span>
+                                        <!-- ngIf: !permision.isCloudMarket --><a class="cursor-pointer ng-scope" href="/member-pay.html#?vipLevel=0" target="_blank" ng-if="!permision.isCloudMarket" ng-click="navMemUpgradeLog('icon');">
+                                            <!-- ngIf: memberData.vipLevel >= 1 -->
+                                        </a><!-- end ngIf: !permision.isCloudMarket -->
+                                        <!-- ngIf: permision.isCloudMarket -->
+                                    </div>
+                                    <div class="capacity-wrap">
+                                        <div class="capacity-use" ng-style="{'width': personalInfo.capacity_info.used / personalInfo.capacity_info.capacity * 100 + '%'}" style="width: 0%;"></div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <span class="ng-binding">0  GB</span>
+                                        <span class="font-text-tip ng-binding">/100  MB</span>
+                                        <!-- ngIf: !permision.isCloudMarket --><a class="font-w-b cr-bdp text-decoration-hover-underline fr ng-scope" href="/member.html" target="_blank" ng-show="memberData.vipLevel == 0" ng-if="!permision.isCloudMarket" ng-click="navMemUpgradeLog('tab_content');">升级会员</a><!-- end ngIf: !permision.isCloudMarket -->
+                                        <!-- ngIf: !permision.isCloudMarket --><a class="font-w-b cr-bdp text-decoration-hover-underline fr ng-hide ng-scope" href="/member-pay.html#?vipLevel=0" target="_blank" ng-show="memberData.vipLevel > 0" ng-if="!permision.isCloudMarket" ng-click="navMemUpgradeLog('tab_content');">升级/续费</a><!-- end ngIf: !permision.isCloudMarket -->
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="operate-list">
+                                <li class="operate-item" ng-click="editUserBaseInfo()">
+                                    <i class="bdp-icon ico-account-personalinfo operate-img"></i>
+                                    <span>个人信息</span>
+                                    <i class="bdp-icon ico-triangle-right operater"></i>
+                                </li>
+                                <!-- ngIf: memberData.vipLevel > 0 && !permision.isCloudMarket -->
+                                <li class="operate-item ng-scope" novice-coupon="">
+                                    <i class="bdp-icon ico-coupon operate-img"></i>
+                                    <i class="unwatched"></i>
+                                    <span>优惠券</span><!-- ngIf: userInfoObj.personal_coupon_number -->
+                                    <i class="bdp-icon ico-triangle-right operater"></i>
+                                </li>
+                                <li class="operate-item" ng-click="editPassword()">
+                                    <i class="bdp-icon ico-account-password operate-img"></i>
+                                    <span>修改密码</span>
+                                    <i class="bdp-icon ico-triangle-right operater"></i>
+                                </li>
+                                <li class="operate-item">
+                                    <i class="bdp-icon ico-theme operate-img"></i>
+                                    <span>主题</span>
+                                    <div class="operater">
+                                        <!-- ngRepeat: theme in themes | orderBy:'id':true track by $index --><div class="theme-operate-light theme-active" bo-title="theme.name" ng-repeat="theme in themes | orderBy:'id':true track by $index" ng-click="changeSelectedTheme(theme.id)" ng-class="{'theme-active': theme.id == usedThemeId}" title="典雅白">
+                                        </div><!-- end ngRepeat: theme in themes | orderBy:'id':true track by $index --><div class="theme-operate-dark" bo-title="theme.name" ng-repeat="theme in themes | orderBy:'id':true track by $index" ng-click="changeSelectedTheme(theme.id)" ng-class="{'theme-active': theme.id == usedThemeId}" title="星空蓝">
+                                        </div><!-- end ngRepeat: theme in themes | orderBy:'id':true track by $index -->
+                                    </div>
+                                </li>
+                                <!-- ngIf: permision.offlineTaskFlag -->
+                                <li class="operate-item ng-scope" ng-click="showOfflineTask()" ng-if="permision.offlineTaskFlag">
+                                    <i class="bdp-icon ico-download-task operate-img"></i>
+                                    <i ng-show="noticeStore.offlineTaskNewFile" class="unwatched ng-hide" ng-class="{'active': noticeStore.offlineTaskNewFile}"></i>
+                                    <span>离线任务</span>
+                                    <i class="bdp-icon ico-triangle-right operater"></i>
+                                </li><!-- end ngIf: permision.offlineTaskFlag -->
+                            </ul>
+                        </div>
+
+                        <!-- ngIf: noticeStore.showOfflineTip -->
+                        <div class="box-account-tip ng-hide" ng-show="generatedCoordinateList.success.length || generatedCoordinateList.failed.length">
+                            <div class="generate-coordinate-success">
+                                <div class="generate-coordinate-status-title ng-hide" ng-show="generatedCoordinateList.success.length > 0">
+                                    <span>下列工作表，新增字段生成成功</span>
+                                    <i class="generate-coordinate-status-close cursor-pointer bdp-icon ico-cancel" ng-click="closeGeneratedTip()"></i>
+                                </div>
+                                <!-- ngRepeat: table in generatedCoordinateList.success -->
+                                <div class="generate-coordinate-status-title ng-hide" ng-show="generatedCoordinateList.failed.length > 0">
+                                    <span>下列工作表，新增字段生成失败</span>
+                                </div>
+                                <!-- ngRepeat: table in generatedCoordinateList.failed -->
+                            </div>
+                        </div>
+                        <!-- ngIf: !permision.isCloudMarket --><div class="box-account-tip w240 ng-hide ng-scope" ng-show="memberData.vipShowTip" ng-if="!permision.isCloudMarket" click-outside="memberData.vipShowTip = false" outside-active="memberData.vipShowTip">
+                            <div class="member-tip-wrap">
+                                <div class="member-tip-content clearfix">
+                                    <div class="line-height-19 ng-binding">
+                                        您的<!-- ngIf: memberData.vipLevel == 1 --><!-- ngIf: memberData.vipLevel == 2 -->会员还有天就到期啦，为确保您能继续享受会员福利，请及时充值续费哦。
+                                    </div>
+                                    <a class="cr-bdp fr line-height-25" href="/member-pay.html#?vipLevel=0" ng-click="memberData.vipShowTip = false" target="_blank">我要续费</a>
+                                </div>
+                            </div>
+                        </div><!-- end ngIf: !permision.isCloudMarket -->
+                    </div>
+                </li>
+                <!-- ngIf: enterprise_type == 3 -->
+                <li class="hd-set-item pl8 pr8 ng-scope" ng-if="enterprise_type == 3">
+                    <nav-notice class="ng-isolate-scope">
+                        <div class="pr" click-outside="vm.show = false" outside-active="vm.show" bindonce="">
+                            <div ng-click="showNoticeList()" title="消息中心">
+                                <span class="bdp-icon-wrap pr" ng-class="{'unread':unread > 0}">
+                                    <i class="bdp-icon ico-alarm-line"></i>
+                                    <i class="unwatched active" ng-show="vm.common.allUnReadLen > 0"></i>
+                                </span>
+                            </div>
+
+                            <div class="nav-unread-wrap J_personal_notice_layer ng-hide" ng-show="vm.unreadShow" ng-click="vm.unreadShow = false;showNoticeList()">
+                                您有新的未读消息
+                                <!-- <a class="btn ml4" ng-click="showNoticeList()">点击查看</a> -->
+                                <!-- <a class="btn font-w-b cr-bdp text-decoration-hover-underline ml4" ng-click="showNoticeList()">点击查看</a> -->
+                                <!-- <i class="bdp-icon ico-delete ml4" ng-click="vm.unreadShow = false"></i> -->
+                            </div>
+                            <div class="nav-notice-list-wrap J_personal_notice_layer ng-hide" ng-show="vm.show">
+                                <ul class="bdp-tab-wrap clearfix notice-tab">
+                                    <!-- ngRepeat: tab in vm.tabs -->
+                                    <li class="bdp-tab-item notice-tab-item ng-binding ng-scope bdp-tab-active" ng-repeat="tab in vm.tabs" ng-class="{'bdp-tab-active': tab.active}" ng-click="vm.changeNoticeType(tab.typeId)">
+                                        系统
+                                        <!-- ngIf: tab.unReadNewsLen > 0 --><span ng-if="tab.unReadNewsLen > 0" class="unread-len ng-binding ng-scope">14</span><!-- end ngIf: tab.unReadNewsLen > 0 -->
+                                    </li><!-- end ngRepeat: tab in vm.tabs -->
+                                    <li class="bdp-tab-item notice-tab-item ng-binding ng-scope" ng-repeat="tab in vm.tabs" ng-class="{'bdp-tab-active': tab.active}" ng-click="vm.changeNoticeType(tab.typeId)">
+                                        预警
+                                        <!-- ngIf: tab.unReadNewsLen > 0 -->
+                                    </li><!-- end ngRepeat: tab in vm.tabs -->
+                                    <li class="bdp-tab-item notice-tab-item ng-binding ng-scope" ng-repeat="tab in vm.tabs" ng-class="{'bdp-tab-active': tab.active}" ng-click="vm.changeNoticeType(tab.typeId)">
+                                        干货
+                                        <!-- ngIf: tab.unReadNewsLen > 0 --><span ng-if="tab.unReadNewsLen > 0" class="unread-len ng-binding ng-scope">14</span><!-- end ngIf: tab.unReadNewsLen > 0 -->
+                                    </li><!-- end ngRepeat: tab in vm.tabs -->
+                                </ul>
+                                <div class="notice-list-scroll">
+                                    <!-- ngIf: vm.currentTab.typeId != 4 --><ul class="notice-list ng-scope" ng-if="vm.currentTab.typeId != 4">
+                                        <!-- ngRepeat: noticeItem in vm.noticeList -->
+                                        <li class="notice-item-wrap clearfix ng-scope notice-unread" ng-repeat="noticeItem in vm.noticeList" ng-class="{'notice-unread': noticeItem.isRead === 0}" ng-click="vm.openMessagePage(noticeItem, $event)">
+                                            <div class="notice-item" title="">
+                                                <div class="notice-html too-long">
+                                                    <div ng-bind-html="noticeItem.content | toSce" class="ng-binding"><p>亲爱的用户，您还有一张88折会员优惠券未使用哦。优惠券福利不常有，薅BDP的羊毛要快准狠哦～～～</p></div>
+                                                </div>
+                                                <div class="notice-sendtime ng-binding">2018-04-08 03:14:14</div>
+                                            </div>
+                                        </li><!-- end ngRepeat: noticeItem in vm.noticeList -->
+                                        <li class="notice-item-wrap clearfix ng-scope notice-unread" ng-repeat="noticeItem in vm.noticeList" ng-class="{'notice-unread': noticeItem.isRead === 0}" ng-click="vm.openMessagePage(noticeItem, $event)">
+                                            <div class="notice-item" title="">
+                                                <div class="notice-html too-long">
+                                                    <div ng-bind-html="noticeItem.content | toSce" class="ng-binding"><p>亲爱的用户，小草莓给您送福利啦，88折会员优惠券奉上，请尽快使用哦～</p></div>
+                                                </div>
+                                                <div class="notice-sendtime ng-binding">2018-03-28 02:12:55</div>
+                                            </div>
+                                        </li><!-- end ngRepeat: noticeItem in vm.noticeList -->
+                                        <li class="notice-item-wrap clearfix ng-scope notice-unread" ng-repeat="noticeItem in vm.noticeList" ng-class="{'notice-unread': noticeItem.isRead === 0}" ng-click="vm.openMessagePage(noticeItem, $event)">
+                                            <div class="notice-item" title="">
+                                                <div class="notice-html too-long">
+                                                    <div ng-bind-html="noticeItem.content | toSce" class="ng-binding"><p>亲爱的用户：</p><p>&nbsp; &nbsp; &nbsp; 大家好，2018年农历新年即将到来，在这辞旧迎新，阖家团圆之际，小草莓代表海致BDP，给大家拜个早年。祝大家狗年吉祥！百业兴旺！</p><p>&nbsp; &nbsp; &nbsp; 2018年春节期间（2月15日至21日），微信服务和在线人工客服暂停。2月22日起服务时间恢复正常：微信10:00–19:00（周一至周五），在线人工客服9:00–20:00。</p><p>&nbsp; &nbsp; &nbsp; 最后，感谢您一直以来的信任与支持！由此给您造成的不便，敬请谅解！&nbsp;</p><p><br></p></div>
+                                                </div>
+                                                <div class="notice-sendtime ng-binding">2018-02-09 11:28:32</div>
+                                            </div>
+                                        </li><!-- end ngRepeat: noticeItem in vm.noticeList -->
+                                        <li class="notice-item-wrap clearfix ng-scope notice-unread" ng-repeat="noticeItem in vm.noticeList" ng-class="{'notice-unread': noticeItem.isRead === 0}" ng-click="vm.openMessagePage(noticeItem, $event)">
+                                            <div class="notice-item" title="">
+                                                <div class="notice-html too-long">
+                                                    <div ng-bind-html="noticeItem.content | toSce" class="ng-binding"><p>因工作调整，微信服务时间调整为10:00–19:00（周一到周五），在线人工客服服务时间为：9:00–20:00，大家在使用BDP过程中遇到的问题尽量在群里和论坛咨询哦~</p><p>论坛链接：https://bbs.bdp.cn/forum.php</p><p><br></p></div>
+                                                </div>
+                                                <div class="notice-sendtime ng-binding">2018-02-08 17:46:53</div>
+                                            </div>
+                                        </li><!-- end ngRepeat: noticeItem in vm.noticeList -->
+                                        <li class="notice-item-wrap clearfix ng-scope notice-unread" ng-repeat="noticeItem in vm.noticeList" ng-class="{'notice-unread': noticeItem.isRead === 0}" ng-click="vm.openMessagePage(noticeItem, $event)">
+                                            <div class="notice-item" title="">
+                                                <div class="notice-html too-long">
+                                                    <div ng-bind-html="noticeItem.content | toSce" class="ng-binding"><p>亲爱的用户，为了提供更好的服务和性能，BDP团队将于12月21日23:00—12月22日00:00进行底层集群系统升级。在此期间，BDP个人版将暂停访问，数据暂停写入（包括同步客户端、同步宝同步和数据上传），为了确保您的数据准确性，请您在服务恢复后及时同步数据。对此给您带来的不便，敬请见谅。<br></p></div>
+                                                </div>
+                                                <div class="notice-sendtime ng-binding">2017-12-20 17:47:33</div>
+                                            </div>
+                                        </li><!-- end ngRepeat: noticeItem in vm.noticeList -->
+                                        <li class="notice-item-wrap clearfix ng-scope notice-unread" ng-repeat="noticeItem in vm.noticeList" ng-class="{'notice-unread': noticeItem.isRead === 0}" ng-click="vm.openMessagePage(noticeItem, $event)">
+                                            <div class="notice-item" title="">
+                                                <div class="notice-html too-long">
+                                                    <div ng-bind-html="noticeItem.content | toSce" class="ng-binding"><p>亲爱的用户，微信公众号对接已升级完成，大家可以正常进行数据对接了！</p></div>
+                                                </div>
+                                                <div class="notice-sendtime ng-binding">2017-12-19 11:46:26</div>
+                                            </div>
+                                        </li><!-- end ngRepeat: noticeItem in vm.noticeList -->
+                                        <li class="notice-item-wrap clearfix ng-scope notice-unread" ng-repeat="noticeItem in vm.noticeList" ng-class="{'notice-unread': noticeItem.isRead === 0}" ng-click="vm.openMessagePage(noticeItem, $event)">
+                                            <div class="notice-item" title="">
+                                                <div class="notice-html too-long">
+                                                    <div ng-bind-html="noticeItem.content | toSce" class="ng-binding"><p>亲爱的用户，非常抱歉的通知您，因为微信公众后台进行了升级处理，导致微信平台对接暂时无法使用，wuli技术大大正在紧急处理中，升级完成之后会第一时间通知到大家，敬请谅解！</p></div>
+                                                </div>
+                                                <div class="notice-sendtime ng-binding">2017-12-15 14:03:07</div>
+                                            </div>
+                                        </li><!-- end ngRepeat: noticeItem in vm.noticeList -->
+                                        <li class="notice-item-wrap clearfix ng-scope notice-unread" ng-repeat="noticeItem in vm.noticeList" ng-class="{'notice-unread': noticeItem.isRead === 0}" ng-click="vm.openMessagePage(noticeItem, $event)">
+                                            <div class="notice-item" title="">
+                                                <div class="notice-html too-long">
+                                                    <div ng-bind-html="noticeItem.content | toSce" class="ng-binding"><p>想要进用户群（新媒体、数据驱动运营、可视化、数据分析）跟各位大神一起交流？那就快来加小草莓微信：15810515566，小草莓拉你进群哦~</p><p>Ps：今晚8点会针对微信公众号相关问题做些解答，有兴趣的小伙伴快私信小草莓！</p><p><br></p></div>
+                                                </div>
+                                                <div class="notice-sendtime ng-binding">2017-12-06 16:39:58</div>
+                                            </div>
+                                        </li><!-- end ngRepeat: noticeItem in vm.noticeList -->
+                                        <li class="notice-item-wrap clearfix ng-scope notice-unread" ng-repeat="noticeItem in vm.noticeList" ng-class="{'notice-unread': noticeItem.isRead === 0}" ng-click="vm.openMessagePage(noticeItem, $event)">
+                                            <div class="notice-item" title="">
+                                                <div class="notice-html too-long">
+                                                    <div ng-bind-html="noticeItem.content | toSce" class="ng-binding"><p>新媒体运营的福利来咯！对接公众平台，BDP将根据您的公众号数据自动生成令老板满意的可视化报表，见仪表盘“微信公众号”。10月20日之前接入的用户重新对接微信平台即可自动生成。</p></div>
+                                                </div>
+                                                <div class="notice-sendtime ng-binding">2017-11-29 16:52:35</div>
+                                            </div>
+                                        </li><!-- end ngRepeat: noticeItem in vm.noticeList -->
+                                        <li class="notice-item-wrap clearfix ng-scope notice-unread" ng-repeat="noticeItem in vm.noticeList" ng-class="{'notice-unread': noticeItem.isRead === 0}" ng-click="vm.openMessagePage(noticeItem, $event)">
+                                            <div class="notice-item" title="">
+                                                <div class="notice-html too-long">
+                                                    <div ng-bind-html="noticeItem.content | toSce" class="ng-binding"><p>半价活动抢购时间已不足5小时，别留遗憾哟~</p></div>
+                                                </div>
+                                                <div class="notice-sendtime ng-binding">2017-11-14 16:16:20</div>
+                                            </div>
+                                        </li><!-- end ngRepeat: noticeItem in vm.noticeList -->
+                                    </ul><!-- end ngIf: vm.currentTab.typeId != 4 -->
+                                    <!-- ngIf: vm.currentTab.typeId == 4 -->
+                                    <!-- ngIf: vm.noticeList.length == 0 -->
+                                </div>
+
+                                <div class="nav-notice-operate clearfix">
+                                    <div class="read-all" ng-click="vm.setNoticeReadAll()">
+                                        全部标为已读
+                                    </div>
+                                    <div class="see-all" ng-click="goToListPage()">
+                                        查看全部
+                                        <i class="bdp-icon ico-triangle-right"></i>
+                                    </div>
+                                </div>
+                                <div ng-loading-gif="" ng-show="vm.loading" class="ng-scope ng-hide"><div class="base-loading-layer"><div class="loader-outer "><div class="loader-inner line-scale-pulse-out-rapid"><div></div><div></div><div></div><div></div><div></div></div></div></div></div>
+                            </div>
+                        </div>
+                    </nav-notice>
+                </li><!-- end ngIf: enterprise_type == 3 -->
+                <li class="hd-set-item pl8 pr8 cursor-pointer ng-scope" ng-show="permision.showAllSetting &amp;&amp; permision.showLogout" ng-controller="LogoutController" ng-click="logout()" title="退出登录">
+                    <span class="bdp-icon-wrap">
+                        <i class="bdp-icon ico-logout"></i>
+                    </span>
+                </li>
+            </ul>
+        </div><!-- end ngIf: permision.personalSetIcon -->
+    </header>
+    <!-- uiView:  --><div class="main header-wraper-height ng-scope" ui-view="" ng-hide="securityStrategy &amp;&amp; securityStrategy.needMobileBind">
+        <div class="chart-edit-layer ng-scope" bindonce="">
+            <div class="view-header J_view_header">
+                <a class="back-btn J-create-chart-ok-button" ng-click="verifyChartArgs()" title="完成">
+                    <i class="bdp-icon ico-back"></i>
+                </a>
+                <div class="view-header-seperate-line"></div>
+                <h2 class="text-left view-header-left-name">编辑图表</h2>
+                <span class="btn-layer">
+                    <a class="help-btn ng-hide" ng-click="show_edit_help(this)" ng-show="!isPersonal" title="帮助">
+                        <i class="bdp-icon ico-info-bold no-margin"></i>
+                    </a>
+                    <a class="help-btn color-blue text-undeline J-how-create-button" title="操作示例" ng-click="show_guide_video()" ng-show="!!isPersonal">
+                        <i class="bdp-icon ico-play-small"></i>操作示例
+                    </a>
+                </span>
+            </div>
+            <div class="chart-left J_chart_left">
+                <div chart-data-info="" sheets-info="dataInfo" class="J_chart_data_info chart-edit-data-info">
+                    <div class="chart-data-info" bindonce="">
+                        <h5 class="h5-title">
+                            <span>工作表</span>
+                            <!-- ngIf: permision.multiDimensionPermission && chartTbCanEdit && !isGraftTb -->
+                        </h5>
+                        <!-- ngRepeat: info in dataInfo --><div ng-repeat="info in dataInfo" class="ng-scope">
+                            <p class="title-desc nowrap" ng-click="previewData(info.tb_id, info.name)">
+                                <!-- ngIf: info.name --><span ng-if="info.name" title="test1" class="ng-binding ng-scope">test1</span><!-- end ngIf: info.name -->
+                                <!-- ngIf: !info.name -->
+                                <!-- ngIf: dataInfo.length == 1 && chartTbCanEdit --><a ng-if="dataInfo.length == 1 &amp;&amp; chartTbCanEdit" class="bdp-icon-wrap cursor-pointer chart-switch-worktable ng-scope" ng-click="switchWorkTable(info.tb_id, $event)" title="切换工作表">
+                                    <i class="bdp-icon ico-replace"></i>
+                                </a><!-- end ngIf: dataInfo.length == 1 && chartTbCanEdit -->
+                                <!-- ngIf: dataInfo.length > 1 && chartTbCanEdit -->
+                            </p>
+                        </div><!-- end ngRepeat: info in dataInfo -->
+                    </div>
+                </div>
+                <div class="hd pr hd-field-wrap chart-right-margin J_field_search" data-isceil="0" style="position: relative; top: auto; width: auto; z-index: 99999;">
+                    <ul class="bdp-tab-wrap__sm clearfix pr">
+                        <li class="bdp-tab-item bdp-tab-active" ng-class="{'bdp-tab-active': fieldArgsList.active === 0}" ng-click="switchFieldAndArgs(0)">字段</li>
+                        <li class="bdp-tab-item ng-scope" ng-class="{'bdp-tab-active': fieldArgsList.active === 1}" ng-click="switchFieldAndArgs(1)" flash-guide="chartArgsMainGuide" fg-show="guideApi.chartArgsMainGuide">参数</li>
+                    </ul>
+                    <div class="add pr">
+                        <!-- ngIf: enterprise_type == 3 --><div ng-if="enterprise_type == 3" ng-show="guide != 1 &amp;&amp; guide != 2" dot-guide="" dot-mask="dotMask.addChartField" guide-item="addChartField" guide-type="chart_edit" watch-status="personalInfo.chart_guide" btn-class="J-dot-add-chart-field" add-class="'dot-guide-add-chart-field'" class="ng-scope ng-isolate-scope dot-guide-add-chart-field"><!-- ngIf: watchStatus == dotGuideData[guideItem].guideNum --></div><!-- end ngIf: enterprise_type == 3 -->
+
+                        <div class="J-dot-add-chart-field" ng-click="newFieldTypeSelect = !newFieldTypeSelect" click-outside="newFieldTypeSelect = false" outside-active="newFieldTypeSelect">
+                            <a class="cursor-pointer bdp-icon-wrap" title="添加新字段">
+                                <i class="bdp-icon ico-plus1"></i>
+                            </a>
+                            <ul class="field-type-select dropdown-wrap ng-hide" ng-show="newFieldTypeSelect">
+                                <li class="dropdown-item" ng-click="createFieldFormula()">添加计算字段</li>
+                                <!-- ngIf: !isGraftTb -->
+                                <li class="dropdown-item ng-scope" ng-click="createFieldGroup()" ng-if="!isGraftTb">添加分组字段</li><!-- end ngIf: !isGraftTb -->
+                                <li class="dropdown-item pr">
+                                    <chart-args-create arg-tb-id="tb_id" arg-ct-id="ct_id" arg-field-list="field_list" class="ng-isolate-scope">
+                                        <a ng-click="createChartArg" bo-text="'param.create' | translate">添加参数</a> <i class="bdp-icon ico-new ng-hide" ng-show="chartArgsNewShow"></i>
+                                    </chart-args-create>
+                                </li>
+                                <!-- ngIf: permision.newTraining && !isGraftTb -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="query-box auto" ng-show="fieldArgsList.active === 0">
+                        <input type="text" class="query-text ng-valid ng-dirty" ng-input-text="" field-ceiling="" ng-model="query">
+                    </div>
+                </div>
+
+                <!-- ngIf: fieldArgsList.active === 0 --><div class="bd chart-right-margin J_field_list mr0 ng-scope" ng-if="fieldArgsList.active === 0" style="margin-top: 8px;">
+
+                    <!-- ngIf: dataInfo.length == 1 --><ul class="field-list mt8 ng-scope" ng-if="dataInfo.length == 1">
+                        <!-- ngRepeat: field in field_list | query_fields:query -->
+                        <li ng-repeat="field in field_list | query_fields:query" ng-class="{'handler-more':field.handler_more_show}" ng-mouseenter="field.justshowme = true" ng-mouseleave="field.justshowme = false" title="34" class="ng-scope">
+                            <div ng-click="show_edit = !show_edit" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone',appendTo:'body', scroll: false}" jqyoui-draggable="{index:0,onStart:'dragTbFunc(field)',onStop:'stopDragField()'}" class="title nowrap string-title cursor-pointer field-drag-title" ng-class="{'field-drag-title': !chartMainMask}" style="position: relative;">
+                                <!-- ngIf: field.data_type==='date' -->
+                                <i class="bdp-icon ico-type-2" ng-class="{'ico-type-2-orange':field.formula, '-ml': field.made_by_ml &amp;&amp; field.formula}"></i>
+                                <!-- ngIf: tbType != 'public' --><span class="data-tag ng-binding ng-scope" field-set-tooltip="field" tooltip-placement="top-left" ng-if="tbType != 'public'" ng-class="{'border-bottom-5182E4': (field.original_name != field.name || field.remark)}" ng-bind="field.name">34</span><!-- end ngIf: tbType != 'public' -->
+                                <!-- ngIf: tbType == 'public' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type == 'string' && field.field_type !== 'group' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type == 'string' && field.field_type === 'group' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type != 'string' -->
+                                <span class="field-handler hover-show" ng-hide="guide == 2 &amp;&amp; enterprise_type == 3">
+                                    <!-- ngIf: field.data_type == 'string' && field.formula =='' --><span class="bdp-icon-wrap fr ng-scope" ng-if="field.data_type == 'string' &amp;&amp; field.formula ==''" ng-click="showEnumOrder(field.fid, false, 'source')" title="排序">
+                                        <i class="bdp-icon ico-config-order hover-show"></i>
+                                    </span><!-- end ngIf: field.data_type == 'string' && field.formula =='' -->
+                                </span>
+                            </div>
+                            <!-- ngIf: field.data_type == 'date' -->
+                        </li><!-- end ngRepeat: field in field_list | query_fields:query -->
+                        <li ng-repeat="field in field_list | query_fields:query" ng-class="{'handler-more':field.handler_more_show}" ng-mouseenter="field.justshowme = true" ng-mouseleave="field.justshowme = false" title="3445" class="ng-scope">
+                            <div ng-click="show_edit = !show_edit" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone',appendTo:'body', scroll: false}" jqyoui-draggable="{index:1,onStart:'dragTbFunc(field)',onStop:'stopDragField()'}" class="title nowrap string-title cursor-pointer field-drag-title" ng-class="{'field-drag-title': !chartMainMask}" style="position: relative;">
+                                <!-- ngIf: field.data_type==='date' -->
+                                <i class="bdp-icon ico-type-2" ng-class="{'ico-type-2-orange':field.formula, '-ml': field.made_by_ml &amp;&amp; field.formula}"></i>
+                                <!-- ngIf: tbType != 'public' --><span class="data-tag ng-binding ng-scope" field-set-tooltip="field" tooltip-placement="top-left" ng-if="tbType != 'public'" ng-class="{'border-bottom-5182E4': (field.original_name != field.name || field.remark)}" ng-bind="field.name">3445</span><!-- end ngIf: tbType != 'public' -->
+                                <!-- ngIf: tbType == 'public' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type == 'string' && field.field_type !== 'group' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type == 'string' && field.field_type === 'group' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type != 'string' -->
+                                <span class="field-handler hover-show" ng-hide="guide == 2 &amp;&amp; enterprise_type == 3">
+                                    <!-- ngIf: field.data_type == 'string' && field.formula =='' --><span class="bdp-icon-wrap fr ng-scope" ng-if="field.data_type == 'string' &amp;&amp; field.formula ==''" ng-click="showEnumOrder(field.fid, false, 'source')" title="排序">
+                                        <i class="bdp-icon ico-config-order hover-show"></i>
+                                    </span><!-- end ngIf: field.data_type == 'string' && field.formula =='' -->
+                                </span>
+                            </div>
+                            <!-- ngIf: field.data_type == 'date' -->
+                        </li><!-- end ngRepeat: field in field_list | query_fields:query -->
+                        <li ng-repeat="field in field_list | query_fields:query" ng-class="{'handler-more':field.handler_more_show}" ng-mouseenter="field.justshowme = true" ng-mouseleave="field.justshowme = false" title="54" class="ng-scope">
+                            <div ng-click="show_edit = !show_edit" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone',appendTo:'body', scroll: false}" jqyoui-draggable="{index:2,onStart:'dragTbFunc(field)',onStop:'stopDragField()'}" class="title nowrap number-title cursor-pointer field-drag-title" ng-class="{'field-drag-title': !chartMainMask}" style="position: relative;">
+                                <!-- ngIf: field.data_type==='date' -->
+                                <i class="bdp-icon ico-type-1" ng-class="{'ico-type-1-orange':field.formula, '-ml': field.made_by_ml &amp;&amp; field.formula}"></i>
+                                <!-- ngIf: tbType != 'public' --><span class="data-tag ng-binding ng-scope" field-set-tooltip="field" tooltip-placement="top-left" ng-if="tbType != 'public'" ng-class="{'border-bottom-5182E4': (field.original_name != field.name || field.remark)}" ng-bind="field.name">54</span><!-- end ngIf: tbType != 'public' -->
+                                <!-- ngIf: tbType == 'public' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type == 'string' && field.field_type !== 'group' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type == 'string' && field.field_type === 'group' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type != 'string' -->
+                                <span class="field-handler hover-show" ng-hide="guide == 2 &amp;&amp; enterprise_type == 3">
+                                    <!-- ngIf: field.data_type == 'string' && field.formula =='' -->
+                                </span>
+                            </div>
+                            <!-- ngIf: field.data_type == 'date' -->
+                        </li><!-- end ngRepeat: field in field_list | query_fields:query -->
+                        <li ng-repeat="field in field_list | query_fields:query" ng-class="{'handler-more':field.handler_more_show}" ng-mouseenter="field.justshowme = true" ng-mouseleave="field.justshowme = false" title="第3列" class="ng-scope">
+                            <div ng-click="show_edit = !show_edit" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone',appendTo:'body', scroll: false}" jqyoui-draggable="{index:3,onStart:'dragTbFunc(field)',onStop:'stopDragField()'}" class="title nowrap number-title cursor-pointer field-drag-title" ng-class="{'field-drag-title': !chartMainMask}" style="position: relative;">
+                                <!-- ngIf: field.data_type==='date' -->
+                                <i class="bdp-icon ico-type-1" ng-class="{'ico-type-1-orange':field.formula, '-ml': field.made_by_ml &amp;&amp; field.formula}"></i>
+                                <!-- ngIf: tbType != 'public' --><span class="data-tag ng-binding ng-scope" field-set-tooltip="field" tooltip-placement="top-left" ng-if="tbType != 'public'" ng-class="{'border-bottom-5182E4': (field.original_name != field.name || field.remark)}" ng-bind="field.name">第3列</span><!-- end ngIf: tbType != 'public' -->
+                                <!-- ngIf: tbType == 'public' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type == 'string' && field.field_type !== 'group' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type == 'string' && field.field_type === 'group' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type != 'string' -->
+                                <span class="field-handler hover-show" ng-hide="guide == 2 &amp;&amp; enterprise_type == 3">
+                                    <!-- ngIf: field.data_type == 'string' && field.formula =='' -->
+                                </span>
+                            </div>
+                            <!-- ngIf: field.data_type == 'date' -->
+                        </li><!-- end ngRepeat: field in field_list | query_fields:query -->
+                        <li ng-repeat="field in field_list | query_fields:query" ng-class="{'handler-more':field.handler_more_show}" ng-mouseenter="field.justshowme = true" ng-mouseleave="field.justshowme = false" title="5624" class="ng-scope">
+                            <div ng-click="show_edit = !show_edit" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone',appendTo:'body', scroll: false}" jqyoui-draggable="{index:4,onStart:'dragTbFunc(field)',onStop:'stopDragField()'}" class="title nowrap number-title cursor-pointer field-drag-title" ng-class="{'field-drag-title': !chartMainMask}" style="position: relative;">
+                                <!-- ngIf: field.data_type==='date' -->
+                                <i class="bdp-icon ico-type-1" ng-class="{'ico-type-1-orange':field.formula, '-ml': field.made_by_ml &amp;&amp; field.formula}"></i>
+                                <!-- ngIf: tbType != 'public' --><span class="data-tag ng-binding ng-scope" field-set-tooltip="field" tooltip-placement="top-left" ng-if="tbType != 'public'" ng-class="{'border-bottom-5182E4': (field.original_name != field.name || field.remark)}" ng-bind="field.name">5624</span><!-- end ngIf: tbType != 'public' -->
+                                <!-- ngIf: tbType == 'public' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type == 'string' && field.field_type !== 'group' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type == 'string' && field.field_type === 'group' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type != 'string' -->
+                                <span class="field-handler hover-show" ng-hide="guide == 2 &amp;&amp; enterprise_type == 3">
+                                    <!-- ngIf: field.data_type == 'string' && field.formula =='' -->
+                                </span>
+                            </div>
+                            <!-- ngIf: field.data_type == 'date' -->
+                        </li><!-- end ngRepeat: field in field_list | query_fields:query -->
+                        <li ng-repeat="field in field_list | query_fields:query" ng-class="{'handler-more':field.handler_more_show}" ng-mouseenter="field.justshowme = true" ng-mouseleave="field.justshowme = false" title="43252" class="ng-scope">
+                            <div ng-click="show_edit = !show_edit" data-drag="true" data-jqyoui-options="{revert: 'invalid', helper: 'clone',appendTo:'body', scroll: false}" jqyoui-draggable="{index:5,onStart:'dragTbFunc(field)',onStop:'stopDragField()'}" class="title nowrap number-title cursor-pointer field-drag-title" ng-class="{'field-drag-title': !chartMainMask}" style="position: relative;">
+                                <!-- ngIf: field.data_type==='date' -->
+                                <i class="bdp-icon ico-type-1" ng-class="{'ico-type-1-orange':field.formula, '-ml': field.made_by_ml &amp;&amp; field.formula}"></i>
+                                <!-- ngIf: tbType != 'public' --><span class="data-tag ng-binding ng-scope" field-set-tooltip="field" tooltip-placement="top-left" ng-if="tbType != 'public'" ng-class="{'border-bottom-5182E4': (field.original_name != field.name || field.remark)}" ng-bind="field.name">43252</span><!-- end ngIf: tbType != 'public' -->
+                                <!-- ngIf: tbType == 'public' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type == 'string' && field.field_type !== 'group' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type == 'string' && field.field_type === 'group' -->
+                                <!-- ngIf: field.formula != '' && field.editable && field.data_type != 'string' -->
+                                <span class="field-handler hover-show" ng-hide="guide == 2 &amp;&amp; enterprise_type == 3">
+                                    <!-- ngIf: field.data_type == 'string' && field.formula =='' -->
+                                </span>
+                            </div>
+                            <!-- ngIf: field.data_type == 'date' -->
+                        </li><!-- end ngRepeat: field in field_list | query_fields:query -->
+                    </ul><!-- end ngIf: dataInfo.length == 1 -->
+                    <!-- ngIf: dataInfo.length > 1 && field_list.hasDimension -->
+                    <!-- ngIf: dataInfo.length > 1 && field_list.hasMeasure -->
+                </div><!-- end ngIf: fieldArgsList.active === 0 -->
+                <!-- ngIf: fieldArgsList.active === 1 -->
+            </div>
+            <!--end chart-left-->
+            <a class="toggle-nav drag-btn J-toggle-nav-chart-left chart-left-drag-btn" resize-width-fields-list="" title="拖动调整宽度" style="top: 0px;"></a>
+            <div class="chart-main" style="overflow-x: auto;">
+                <div class="chart-args">
+                    <!-- 层级 -->
+                    <div ng-show="chart_ops.meta.level_fields.length > 1" class="row axis level ng-hide" ng-class="{'multi-axis':viewMeta.chart_type === 'C250'}">
+                        <span class="axis-head">
+                            <span class="axis-head-name">图层</span>
+                        </span>
+                        <div class="drag-target">
+                            <!--x、y正常显示-->
+                            <div class="drag-target-inner ng-pristine ng-valid ui-droppable" ng-model="level_fields" data-drop="true" data-jqyoui-options="{greedy:true, accept: '.field-list .field-drag-title', scroll: false}" data-jqyoui-droppable="{onDrop:'join_field(\'drill\')'}">
+                                <ul class="drag-target-list drag-target-list-layer J-delete-target-id ng-isolate-scope ng-pristine ng-valid ui-sortable" ui-sortable="sortAxisDrillField" id="dragDrill" ng-model="chart_ops.meta.level_fields">
+                                    <!-- ngRepeat: it in chart_ops.meta.level_fields -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 维度 -->
+                    <div class="row axis" ng-class="{'multi-axis':viewMeta.chart_type === 'C250'}">
+                        <span class="axis-head">
+                            <span class="axis-head-name">维度</span>
+                            <i class="bdp-icon ico-edit batch-add-axis-btn" ng-click="batchOnDropAdd('x')"></i>
+                        </span>
+                        <div class="drag-target">
+                            <div class="y_operate ng-hide" ng-hide="!!viewMeta.compare_axis || viewMeta.chart_type == 'C280' || viewMeta.chart_type == 'C340'" ng-click="axisHandle.add('compare_axis')">
+                                <i class="bdp-icon ico-handle-compare"></i>
+                                <span>添加对比</span>
+                            </div>
+                            <!--x、y正常显示-->
+                            <div class="drag-target-inner xAxis ui-droppable" data-drop="true" data-jqyoui-options="{greedy:true, accept: '.field-list .field-drag-title', scroll: false}" data-jqyoui-droppable="{onDrop:'onDropAdd(\'x\')'}">
+                                <ul class="drag-target-list drag-target-list-dimension J-delete-target-id ng-isolate-scope ng-pristine ng-valid ui-sortable" id="dragX" ui-sortable="sortAxisField" ng-model="viewMeta.x">
+                                    <!-- ngRepeat: it in viewMeta.x -->
+                                    <!-- ngIf: enterprise_type == 3 && viewMeta.x && viewMeta.x.length > 0 -->
+                                </ul>
+                            </div>
+                        </div>
+                        <!--end drag-target-->
+                    </div>
+                    <!-- 对比 -->
+                    <!-- ngIf: !!viewMeta.compare_axis --><div class="row axis ng-scope" ng-if="!!viewMeta.compare_axis" ng-class="{'multi-axis':viewMeta.chart_type === 'C250'}">
+                        <span class="axis-head">
+                            <span class="axis-head-name">对比</span>
+                            <i class="bdp-icon ico-edit batch-add-axis-btn" ng-click="batchOnDropAdd('compare_axis')"></i>
+                        </span>
+                        <div class="drag-target">
+                            <div class="y_operate" ng-click="axisHandle.remove('compare_axis')">
+                                <i class="bdp-icon ico-handle-compare"></i>
+                                <span>移除对比</span>
+                            </div>
+                            <div class="drag-target-inner yAxis ng-pristine ng-valid ui-droppable" ng-model="compare_list" data-drop="true" data-jqyoui-options="{greedy:true, accept: '.field-list .field-drag-title', scroll: false}" data-jqyoui-droppable="{onDrop:'onDropAdd(\'compare_axis\')'}">
+                                <ul class="drag-target-list drag-target-list-dimension J-delete-target-id ng-isolate-scope ng-pristine ng-valid ui-sortable" id="dragCompare_axis" ui-sortable="sortAxisField" ng-model="viewMeta.compare_axis">
+                                    <!-- ngRepeat: it in viewMeta.compare_axis track by $index -->
+                                </ul>
+                            </div>
+                            <!--drag target inner-->
+                        </div>
+                    </div><!-- end ngIf: !!viewMeta.compare_axis -->
+                    <!-- 数值 普通 双轴左 散点X -->
+                    <div class="row axis" ng-class="{'multi-axis':viewMeta.chart_type === 'C250'}">
+                        <div class="axis-head">
+                            <!-- ngIf: viewMeta.chart_type == 'C280' -->
+                            <!-- ngIf: viewMeta.chart_type !== 'C280' --><span class="axis-head-name ng-scope" ng-if="viewMeta.chart_type !== 'C280'">数值</span><!-- end ngIf: viewMeta.chart_type !== 'C280' -->
+                            <!-- ngIf: !(viewMeta.chart_type === 'C250') && !(viewMeta.show_y_axis_optional) --><i class="bdp-icon ico-edit batch-add-axis-btn ng-scope" ng-click="batchOnDropAdd('y')" ng-if="!(viewMeta.chart_type === 'C250') &amp;&amp; !(viewMeta.show_y_axis_optional)"></i><!-- end ngIf: !(viewMeta.chart_type === 'C250') && !(viewMeta.show_y_axis_optional) -->
+                            <!-- ngIf: viewMeta.chart_type === 'C250' -->
+                        </div>
+                        <div class="drag-target">
+                            <div class="y_operate" ng-hide="viewMeta.show_y_axis_optional || viewMeta.chart_type == 'C280'">
+                                <!-- ngIf: enterprise_type == 3 --><div ng-if="enterprise_type == 3" ng-show="guide != 1 &amp;&amp; guide != 2" dot-guide="" dot-mask="dotMask.biaxialDiagram" guide-item="biaxialDiagram" guide-type="chart_edit" watch-status="personalInfo.chart_guide" btn-class="J-dot-biaxial-diagram" add-class="'dot-guide-biaxial-diagram'" class="ng-scope ng-isolate-scope dot-guide-biaxial-diagram"><!-- ngIf: watchStatus == dotGuideData[guideItem].guideNum --></div><!-- end ngIf: enterprise_type == 3 -->
+                                <div class="J-dot-biaxial-diagram" ng-click="axisHandle.add('y_optional')">
+                                    <i class="bdp-icon ico-handle-yaxis"></i>
+                                    <span>添加次轴</span>
+                                </div>
+                            </div>
+                            <!--x、y正常显示-->
+                            <div class="drag-target-inner yAxis ui-droppable" data-drop="true" data-jqyoui-options="{greedy:true, accept: '.field-list .field-drag-title', scroll: false}" data-jqyoui-droppable="{onDrop:'onDropAdd(\'y\')'}">
+                                <ul class="drag-target-list drag-target-list-dimension pr J-delete-target-id ng-isolate-scope ng-pristine ng-valid ui-sortable" id="dragY" ui-sortable="sortAxisField" ng-class="{'not-sortable':viewMeta.chart_type == 'C280'}" ng-model="viewMeta.y">
+                                    <!-- ngRepeat: it in viewMeta.y -->
+                                </ul>
+                            </div>
+                            <!--drag target inner-->
+                        </div>
+                    </div>
+                    <!-- 数值 双轴右 -->
+                    <!-- ngIf: viewMeta.show_y_axis_optional -->
+                    <!-- 数值 散点Y -->
+                    <!-- ngIf: viewMeta.chart_type == 'C280' -->
+                </div>
+                <!--end chart args-->
+                <div class="chart-left-side hide-color-setting" ng-class="{'hide-color-setting': !canSetColor(viewMeta.chart_type)}" style="top: 130px;">
+                    <div class="filter-layer expansion ng-pristine ng-valid ui-droppable" ng-class="{top:pageInfo.type == 'double_y'}" data-drop="true" jqyoui-droppable="{onDrop:'filterHandler.addFilter()'}" data-jqyoui-options="{accept: dropAccept || '.field-list .field-drag-title'}" ng-model="filter_list_require" bindonce="" chart-filter="">
+                        <div class="hd">
+                            <p>筛选器</p>
+                        </div>
+                        <div class="bd">
+                            <!-- ngIf: getFilterList().length == 0 --><p class="no-filter ng-scope" ng-if="getFilterList().length == 0">
+                                <span>拖拽字段到这里</span>
+                                <br>
+                                <span>进行筛选</span>
+                            </p><!-- end ngIf: getFilterList().length == 0 -->
+                            <ul class="row-y filter-ul">
+                                <!-- ngRepeat: it in getFilterList() track by it.fid -->
+                            </ul>
+
+                        </div>
+                    </div>
+                    <!-- ngIf: !(viewMeta.chart_type == 'C280' || viewMeta.chart_type == 'C273') --><div class="color-setting-layer ng-scope ng-hide" chart-color-setting="" ng-show="canSetColor(viewMeta.chart_type)" ng-if="!(viewMeta.chart_type == 'C280' || viewMeta.chart_type == 'C273')">
+                        <!-- ngIf: !(currentMeta.chart_type == 'C280' || currentMeta.chart_type == 'C273') --><hr class="split ng-scope" ng-if="!(currentMeta.chart_type == 'C280' || currentMeta.chart_type == 'C273')"><!-- end ngIf: !(currentMeta.chart_type == 'C280' || currentMeta.chart_type == 'C273') -->
+                        <div class="color-setting ui-droppable" data-drop="true" data-jqyoui-options="{accept: '.field-list .field-drag-title'}" data-jqyoui-droppable="{onDrop: 'dropField()'}" bindonce="">
+                            <!-- ngIf: !(currentMeta.chart_type == 'C280' || currentMeta.chart_type == 'C273') --><div style="padding: 0 0 8px 0" class="color-setting-title ng-scope" ng-if="!(currentMeta.chart_type == 'C280' || currentMeta.chart_type == 'C273')">颜色</div><!-- end ngIf: !(currentMeta.chart_type == 'C280' || currentMeta.chart_type == 'C273') -->
+                            <div ng-show="!showSeriesColor" ng-click="clickPanel()" class="">
+                                <!-- ngRepeat: colorField in currentMeta.color_setting.field -->
+                                <!-- 旭日图颜色设置 -->
+                                <!-- ngIf: currentMeta.chart_type == 'C360' -->
+                                <!-- 旭日图颜色设置结束 -->
+                                <!-- 树图颜色设置 -->
+                                <!-- ngIf: currentMeta.chart_type == 'C370' -->
+                                <!-- 树图颜色设置结束-->
+
+                            </div>
+
+                            <div ng-show="showSeriesColor &amp;&amp; seriesColors &amp;&amp; seriesColors.length > 0" class="cursor-pointer ng-hide">
+                                <ul ng-click="showColorSettingModalByItem()">
+                                    <!-- ngRepeat: s in seriesColors -->
+                                </ul>
+                            </div>
+                            <!-- ngIf: !colorSettingDisabled && !showSeriesColor && (!colorSetting || colorSetting.mode === undefined) --><div ng-if="!colorSettingDisabled &amp;&amp; !showSeriesColor &amp;&amp; (!colorSetting || colorSetting.mode === undefined)" class="no-color-setting ng-scope">
+                                <p>拖拽字段到这里</p>
+                                <p>进行颜色设置</p>
+                            </div><!-- end ngIf: !colorSettingDisabled && !showSeriesColor && (!colorSetting || colorSetting.mode === undefined) -->
+                            <!-- ngIf: colorSettingDisabled -->
+
+                        </div>
+                    </div><!-- end ngIf: !(viewMeta.chart_type == 'C280' || viewMeta.chart_type == 'C273') -->
+                    <!-- ngIf: viewMeta.chart_type == 'C280' || viewMeta.chart_type == 'C273' -->
+                </div>
+                <a class="toggle-nav drag-btn" resize-width-filter-list="" title="拖动调整宽度" style="top: 130px;"></a>
+                <div id="chartBox" style="top: 130px;">
+                    <div chart-info-summary="" class="cursor-pointer chart-info-summary-icon ng-scope">
+                        <i class="bdp-icon ico-info-sign"></i>
+                        <div class="dropdown-wrap chart-info-summary">
+                            <em class="arrow-up"></em>
+                            <div class="summary-content-wrap">
+                                <ul>
+                                    <li class="label nowrap">数据更新</li>
+                                    <li class="text ng-binding">2017-12-14 19:36:33</li>
+                                </ul><!-- ngRepeat: y in yAxis --><!-- ngRepeat: x in xAxis --><!-- ngIf: description --><table class="chart-info-summary-content"></table>
+                            </div>
+                        </div>
+                    </div>
+                    <div chart-inner-filter="" chartid="chartid" class="clearfix ng-scope">
+                        <!-- ngIf: innerFilterList.length -->
+                    </div>
+
+                    <advance-sort chart-options="draw_chart_url.options" chart-meta="viewMeta" drill-level="drill_level" bdp-chart-obj="$bdpChart" save-chart-fun="saveChartImmediate()" is-graft-tb="isGraftTb" chart-mode="edit" class="ng-isolate-scope"><!-- ngIf: advanceSortData.canSetAdvancedSort --></advance-sort>
+
+                    <!-- ngIf: selected_type === 'C200' -->
+                    <!-- ngIf: chartConfig.canSetSelectionAnalysis -->
+                    <div class="drill-crumbs-wrap"></div>
+                    <div bdp-chart="draw_chart_url.options" display-mode="edit" data-options="draw_chart_url.options" data-lazy-loaded="draw_chart_url.lazyload" class="chart J_chart_box chart-theme-default show-datalabels bdp-chart-loaded" ng-class="{
+                    'cursor-crosshair': inAddingMarkPoint,
+                    'chart-table':selected_type === 'C200',
+                    'chart-canvas-table': selected_type === 'C200',
+                    'chart-funnel overflow-hidden':selected_type === 'C330',
+                    'show-datalabels': viewMeta.show_datalabels == true
+                }" style="top: 47px;" data-highcharts-chart="8"><div id="highcharts-ufut6oc-18" class="highcharts-container " style="position: relative; overflow: hidden; width: 524px; height: 262px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); font-family: Avenir, wf_SegoeUI, &quot;Segoe UI&quot;, Segoe, &quot;Segoe WP&quot;, Tahoma, Verdana, Arial, sans-serif;"><svg version="1.1" class="highcharts-root" style="font-family:&quot;Avenir&quot;, &quot;wf_SegoeUI&quot;, &quot;Segoe UI&quot;, &quot;Segoe&quot;, &quot;Segoe WP&quot;, &quot;Tahoma&quot;, &quot;Verdana&quot;, &quot;Arial&quot;, &quot;sans-serif&quot;;font-size:12px;" xmlns="http://www.w3.org/2000/svg" width="524" viewBox="0 0 524 262" height="262"><desc>Created with Highcharts 5.0.4</desc><defs><clipPath id="highcharts-ufut6oc-19"><rect x="0" y="0" width="523" height="248" fill="none"></rect></clipPath></defs><rect fill="none" class="highcharts-background" x="0" y="0" width="524" height="262" rx="0" ry="0"></rect><rect fill="none" class="highcharts-plot-background" x="1" y="10" width="523" height="248"></rect><g class="highcharts-label highcharts-no-data" style="" transform="translate(217,123)"><text x="3" style="font-size:12px;font-weight:bold;color:#60606a;fill:#60606a;" y="15">当前图表无数据</text></g><rect fill="none" class="highcharts-plot-border" x="1" y="10" width="523" height="248"></rect><g class="highcharts-series-group"></g><text x="263" text-anchor="middle" class="highcharts-subtitle" style="color:#333333;font-family:Microsoft Yahei;font-size:16px;fill:#333333;width:479px;" y="-10"><tspan>未命名图表</tspan></text><g class="highcharts-legend"><rect fill="none" class="highcharts-legend-box" rx="0" ry="0" x="0" y="0" width="8" height="8" visibility="hidden"></rect><g><g></g></g></g></svg></div></div>
+                </div>
+                <!-- ngIf: chartMainMask -->
+            </div>
+            <!--end chart-main-->
+            <div class="J-chart-right chart-config-container" bindonce="" chart-config="">
+                <!-- 图表名称 start-->
+                <!-- ngIf: chartConfig.canEditChartTitle --><div class="block chart-title ng-scope" ng-if="chartConfig.canEditChartTitle">
+                    <div class="block-header has-toggle is-toggle" ng-click="chartConfig.toggleNextBlock($event)">图表标题</div>
+                    <div class="block-body" style="display: none;">
+                        <input type="text" ng-model="chart_ops.name" class="input-text-block ng-pristine ng-valid" ng-click="ifClearName($event)" ng-keydown="ifEnterDown($event)" ng-blur="saveAfterCheckDirty({not_need_redraw:true,only_refresh_data:false,closeDialog:false})" ng-disabled="selected_type === 'C310'" placeholder="未命名图表">
+                    </div>
+                </div><!-- end ngIf: chartConfig.canEditChartTitle -->
+                <!-- 图表名称 end -->
+                <!-- 图表类型 end -->
+                <!-- ngIf: chartConfig.canEditChartType --><div class="block chart-type ng-scope" ng-if="chartConfig.canEditChartType">
+                    <div class="block-header has-toggle is-toggle" ng-click="chartConfig.toggleNextBlock($event)">图表类型</div>
+                    <div class="block-body mt8" style="display: none;">
+                        <ul>
+                            <!-- ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C200"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C310"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C261"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C220"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C210"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C211"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C212"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C320"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C240"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C241"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C242"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C243"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C350"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C351"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C352"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C280"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C230"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C360"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C370"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C330"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C271"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C250"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C340"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C300"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                            <li ng-repeat="type in chart_type" ng-mouseover="showChartTypeTip(type.type, $event)" ng-mouseleave="hideChartTypeTip(type.type, $event)" class="ng-scope">
+                                <!-- ngIf: type.status -->
+                                <!-- ngIf: !type.status --><a ng-if="!type.status" class="disabled ng-scope" ng-click="switchChartType($index, !type.status)">
+                                    <i class="chart-type-icon C290"></i>
+                                </a><!-- end ngIf: !type.status -->
+                            </li><!-- end ngRepeat: type in chart_type -->
+                        </ul>
+                    </div>
+                </div><!-- end ngIf: chartConfig.canEditChartType -->
+                <!-- 图表类型 end -->
+                <!-- 图内筛选器 start -->
+                <div class="block chart-inner-filter-level ng-isolate-scope" ng-show="chartConfig.canEditInnerFilter" chart-inner-filter-level="" isgraft="isGraftTb" opts="chart_ops" chartid="chartid" save="saveChartImmediate" fields="field_list" toggle-block="chartConfig.toggleNextBlock">
+                    <div class="block-header has-toggle no-toggle" ng-click="toggleBlock($event)" ng-class="{'no-toggle': currentLevelInnerFilter.length == 0}">
+                        <a class="bdp-icon-wrap hd-icon" ng-click="addInnerFilter($event, isgraft)">
+                            <i class="bdp-icon ico-edit"></i>
+                        </a>
+                        <span>图内筛选器</span>
+                    </div>
+                    <div class="block-body ng-hide" ng-show="currentLevelInnerFilter.length > 0">
+                        <div ui-tree="treeOptions" class="ng-scope angular-ui-tree">
+                            <ol ui-tree-nodes="" ng-model="currentLevelInnerFilter" class="ng-scope ng-pristine ng-valid angular-ui-tree-nodes">
+                                <!-- ngRepeat: item in currentLevelInnerFilter -->
+                            </ol>
+                            <div class="angular-ui-tree-empty"></div>
+                        </div>
+                    </div>
+
+                    <script type="text/ng-template" id="innerFilterLevelTpl">
+                        <div ui-tree-handle="" class="inner-filter-item nowrap">
+                            <a class="bdp-icon-wrap">
+                                <i class="bdp-icon ico-order cursor-move"></i>
+                            </a>
+                            <span class="nowrap name" title="{{item.name}}" ng-if="!item.nick_name">{{item.name}}{{setAdvanceAggregatorName(item)}}</span>
+                            <span class="nowrap name" title="{{item.nick_name}}" ng-if="!!item.nick_name">{{item.nick_name}}</span>
+                            <span class="pa hidden operate" ng-hide="item.data_type === 'number' || ( item.data_type !='number' && item.hasOwnProperty('aggregator') )">
+                                <a class="bdp-icon-wrap" data-nodrag="" ng-click="innerFilter.level(this,'up')">
+                                    <i class="bdp-icon ico-triangle-left fr"></i>
+                                </a>
+                                <a class="bdp-icon-wrap" data-nodrag="" ng-click="innerFilter.level(this,'down')">
+                                    <i class="bdp-icon ico-triangle-right fl"></i>
+                                </a>
+                            </span>
+                        </div>
+                        <ol ui-tree-nodes="" ng-model="item.items">
+                            <li ng-repeat="item in item.items" ng-init="itemChild=true" ui-tree-node="" ng-include="'innerFilterLevelTpl'">
+                            </li>
+                        </ol>
+                    </script>
+                </div>
+                <!-- 图内筛选器 end -->
+                <!-- 图内参数 start -->
+                <div class="block ng-isolate-scope ng-hide" ng-show="chart_ops.meta.param_setting.length > 0" chart-inner-args="" arg-tb-id="tb_id" arg-ct-id="ct_id" arg-save="saveChartImmediate" arg-view-meta="chart_ops.meta" toggle-block="chartConfig.toggleNextBlock">
+                    <div class="block-header has-toggle no-toggle" ng-click="toggleBlock($event)" ng-class="{'no-toggle': !argViewMeta.param_setting || argViewMeta.param_setting.length == 0}">
+                        <a class="bdp-icon-wrap hd-icon" ng-click="setArgsPermission($event)">
+                            <i class="bdp-icon ico-edit"></i>
+                        </a>
+                        <span bo-text="'param.chartConfigParam' | translate">图内参数</span>
+                    </div>
+                    <div class="block-body ng-isolate-scope ng-hide" ng-show="argViewMeta.param_setting &amp;&amp; argViewMeta.param_setting.length > 0" chart-args-use="" chart-options="" arg-view-meta="argViewMeta" arg-save="argSave" chart-mode="edit">
+                        <div class="pr">
+                            <!-- ngRepeat: param in argList track by $index -->
+                        </div>
+                    </div>
+                </div>
+                <!-- 图内参数 end -->
+                <!-- 桑基图特殊配置 start -->
+                <!-- ngIf: chartConfig.canEditSankeySpec -->
+                <!-- 桑基图特殊配置 end -->
+                <!-- 计量图特殊配置 start -->
+                <!-- ngIf: chartConfig.canEditGaugeSpec -->
+                <!-- 计量图特殊配置 end -->
+                <!-- 词云特殊配置 start -->
+                <!-- ngIf: chartConfig.canEditWordcloudSpec -->
+                <!-- 词云特殊配置 end -->
+                <!-- 表格特殊配置 start -->
+                <!-- ngIf: chartConfig.canEditTableSpec -->
+                <!-- 表格特殊配置 end -->
+                <!-- 功能配置 start -->
+                <div class="block chart-feature ng-hide" ng-show="chartConfig.canEditChartFeature">
+                    <div class="block-header has-toggle is-toggle" ng-click="chartConfig.toggleNextBlock($event)">功能配置</div>
+                    <div class="block-body" style="display: none;">
+                        <!-- 预警线 start -->
+                        <div chart-warning="" ng-show="chartConfig.canEditWarnLine" class="ng-hide">
+                            <div class="sub-block">
+                                <div class="block-header no-margin" ng-class="{'no-margin':y_warns.length === 0 }">
+                                    <span>预警</span>
+                                    <span ng-show="chart_ops.chart_type == 'C250'" class="ng-hide">(<span>主坐标轴</span>)</span>
+                                    <a class="bdp-icon-wrap hd-icon" ng-click="showSetWarningDialog('y')" ng-class="{disabled: isGraftTb}" title="设置预警">
+                                        <i class="bdp-icon ico-edit"></i>
+                                    </a>
+                                </div>
+                                <div class="block-body">
+                                    <ul class="warn">
+                                        <!-- ngRepeat: warn in y_warns -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- ngIf: chart_ops.meta.level[drill_level].y_optional.length > 0 && !chart_ops.meta.level[drill_level].zero_aligned -->
+
+                        </div>
+                        <!-- 预警线 end -->
+                        <!-- 辅助线 start -->
+                        <div plot-line="" ng-show="chartConfig.canEditPlotLine" class="ng-hide">
+                            <div class="sub-block">
+                                <div class="block-header no-margin" ng-class="{'no-margin':!showPlotLines.length}">
+                                    <span>辅助线</span><span ng-show="chart_ops.chart_type === 'C250'" class="ng-hide">(<span>主坐标轴</span>)</span>
+                                    <a class="bdp-icon-wrap hd-icon" ng-click="setPlotLine('y')">
+                                        <i class="bdp-icon ico-edit"></i>
+                                    </a>
+                                </div>
+                                <div class="block-body no-padding" ng-class="{'no-padding':!showPlotLines.length}">
+                                    <!-- ngIf: !!showPlotLines.length || !!showPlotLinesX.length -->
+                                </div>
+                            </div>
+                            <!-- ngIf: selected_type && selected_type === 'C250' && !chart_ops.meta.level[drill_level].zero_aligned -->
+                        </div>
+                        <!-- 辅助线 end -->
+                        <!-- 条件格式 start -->
+                        <!-- ngIf: chartConfig.canEditConditionFormat -->
+                        <!-- 条件格式 end -->
+                        <!-- 显示条目数 start -->
+                        <!-- ngIf: chartConfig.canEditTopChart -->
+                        <!-- 显示条目数 end -->
+                        <!-- 数据标注 start -->
+                        <div class="sub-block chart-mark-point ng-hide" ng-show="chartConfig.canEditMarkPoint">
+                            <div class="block-header no-margin">
+                                <span>数据标注</span>
+                                <a mark-point="" class="fr bdp-icon-wrap hd-icon" ng-click="addMarkPoint()">
+                                    <i class="bdp-icon ico-plus1"></i>
+                                </a>
+                            </div>
+                            <div class="block-body ng-hide" ng-show="right_comment.length > 0">
+                                <ul class="mark-point-list">
+                                    <!-- ngRepeat: fc in right_comment track by $index -->
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- 数据标注 end -->
+                        <!-- 对比拆分 start -->
+                        <!-- ngIf: chartConfig.canEditSplitCompare -->
+                        <!-- 对比拆分 end -->
+                    </div>
+                </div>
+                <!-- 功能配置 end -->
+                <!-- 交互元素 start -->
+                <!-- ngIf: chartConfig.canEditChartInteractive -->
+                <!-- 交互元素 end -->
+                <!-- 数值设置 start -->
+                <!-- ngIf: chartConfig.canEditChartNumercial -->
+                <!-- 数值设置 end -->
+                <!-- X坐标轴 start -->
+                <!-- ngIf: chartConfig.canEditXAxis -->
+                <!-- X坐标轴 end -->
+                <!-- 主坐标轴 start -->
+                <!-- ngIf: chartConfig.canEditLeftAxis -->
+                <!-- 主坐标轴 end -->
+                <!-- 次坐标轴 start -->
+                <!-- ngIf: chartConfig.canEditRightAxis -->
+                <!-- 次坐标轴 end -->
+                <!-- 图表样式 start -->
+                <!-- ngIf: chartConfig.canEditChartStyleSetting -->
+                <!-- 图表样式 end -->
+                <!-- 地图特殊配置 start -->
+                <!-- ngIf: chartConfig.canEditMapSpec -->
+                <!-- ngIf: chartConfig.canEditMapSpec -->
+                <!-- 地图特殊配置 end -->
+                <!-- 图表描述 start -->
+                <!-- ngIf: chartConfig.canEditDescription --><div class="block no-shadow chart-description ng-scope" ng-if="chartConfig.canEditDescription">
+                    <div class="block-header has-toggle" ng-click="chartConfig.toggleNextBlock($event)">图表备注</div>
+                    <div class="block-body mt8">
+                        <textarea msd-elastic="" class="input-text-block chart-description J-chart-description-textarea ng-pristine ng-valid" ng-model="chart_ops.description" ng-keyup="keyUpChartDescription()" style="overflow: hidden; word-wrap: break-word; resize: none; height: 64px;"></textarea>
+                    </div>
+                </div><!-- end ngIf: chartConfig.canEditDescription -->
+                <!-- 图表描述 end -->
+            </div>
+            <!--end chart-right-->
+            <div class="chart-type-tip" style="top: 0px; right: 0px; display: none; z-index: 99999;">
+                <em class="arrow"></em>
+                <p class="chart-type-name ng-binding">表格</p>
+                <!-- ngIf: true --><p ng-if="true" class="ng-scope">
+                    <span class="ng-binding">0 个或多个</span>
+                    <!-- ngIf: chartTypeConfigMesg.dimension == 'only0' || chartTypeConfigMesg.dimension == 'onlyOne' || chartTypeConfigMesg.dimension == '0orOne' -->
+                    <!-- ngIf: chartTypeConfigMesg.dimension != 'only0' && chartTypeConfigMesg.dimension != 'onlyOne' && chartTypeConfigMesg.dimension != '0orOne' --><span ng-if="chartTypeConfigMesg.dimension != 'only0' &amp;&amp; chartTypeConfigMesg.dimension != 'onlyOne' &amp;&amp; chartTypeConfigMesg.dimension != '0orOne'" class="ng-scope">维度</span><!-- end ngIf: chartTypeConfigMesg.dimension != 'only0' && chartTypeConfigMesg.dimension != 'onlyOne' && chartTypeConfigMesg.dimension != '0orOne' -->
+                    <!-- ngIf: chartTypeConfigMesg.type === 'C271' || chartTypeConfigMesg.type === 'C272' -->
+                    <!-- ngIf: chartTypeConfigMesg.needComparison --><span ng-if="chartTypeConfigMesg.needComparison" class="ng-scope">
+                        (
+                        <span>支持对比</span>)
+                    </span><!-- end ngIf: chartTypeConfigMesg.needComparison -->
+                </p><!-- end ngIf: true -->
+                <!-- ngIf: chartTypeConfigMesg.showCombination.length == 0 --><p ng-if="chartTypeConfigMesg.showCombination.length == 0" class="ng-scope">
+                    <span class="ng-binding">0 个或多个</span>
+                    <span>数值</span>
+                </p><!-- end ngIf: chartTypeConfigMesg.showCombination.length == 0 -->
+                <!-- ngIf: chartTypeConfigMesg.showCombination.length > 0 -->
+                <!-- ngIf: chartTypeConfigMesg.showCombination.length > 0 -->
+                <!-- ngIf: ['C300', 'C340'].indexOf(chartTypeConfigMesg.type) > -1 && isGraftTb -->
+            </div>
+            <div class="guide guide-chart-edit ng-hide" ng-show="show_chart_edit_guide">
+                <div class="guide-switch-ds">
+                    <div class="guide-opacity-bg"></div>
+                    <div class="guide-tip">
+                        <em class="arrow arrow-up"></em>
+                        <span>修改数据源</span>
+                    </div>
+                </div>
+                <div class="guide-chart-field">
+                    <div class="guide-opacity-bg"></div>
+                    <div class="guide-tip">
+                        <em class="arrow arrow-down"></em>
+                        <span>字段列表</span>
+                    </div>
+                </div>
+                <div class="guide-chart-axis">
+                    <div class="guide-opacity-bg"></div>
+                    <div class="guide-tip">
+                        <em class="arrow arrow-down"></em>
+                        <span>鼠标拖拽字段轻松定义元数据</span>
+                    </div>
+                </div>
+                <div class="guide-chart-title">
+                    <div class="guide-opacity-bg"></div>
+                    <div class="guide-tip">
+                        <em class="arrow arrow-down"></em>
+                        <span>修改图表名称</span>
+                    </div>
+                </div>
+                <div class="guide-chart-filter">
+                    <div class="guide-opacity-bg"></div>
+                    <div class="guide-tip">
+                        <em class="arrow arrow-down"></em>
+                        <span>增加筛选器</span>
+                    </div>
+                </div>
+                <div class="guide-switch-type">
+                    <div class="guide-opacity-bg"></div>
+                    <div class="guide-tip">
+                        <em class="arrow arrow-right"></em>
+                        <span>各类图表类型随意切换</span>
+                    </div>
+                </div>
+                <div class="guide-chart-setting">
+                    <div class="guide-opacity-bg"></div>
+                    <div class="guide-tip">
+                        <em class="arrow arrow-right"></em>
+                        <span>自定义图表配置项</span>
+                    </div>
+                </div>
+                <div class="guide-draw-chart">
+                    <div class="guide-opacity-bg"></div>
+                    <div class="guide-tip">可视化图表自动生成</div>
+                </div>
+            </div>
+            <!-- ngIf: add_to_axis_guide -->
+            <!-- ngIf: select_chart_type_guide -->
+            <!-- ngIf: inAddingMarkPoint -->
+        </div>
+        <div class="guide-video ng-scope ng-hide" ng-show="showGuideVideo" bindonce="">
+            <div class="video-wrap J-guide-video slow-in">
+                <span class="video-close bdp-icon" ng-click="close_guide_video()" title="关闭">
+                    <i class="bdp-icon ico-cancel-white"></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="hz-tip error hidden ng-scope" id="dataOver">
+            <span></span>
+        </div>
+
+        <div ng-loading-gif="" ng-show="chartContentLoading" class="ng-scope ng-hide"><div class="base-loading-layer"><div class="loader-outer "><div class="loader-inner line-scale-pulse-out-rapid"><div></div><div></div><div></div><div></div><div></div></div></div></div></div>
+    </div>
+    <div ng-loading-gif="" ng-show="pageLoading" ng-class="{'fullscreen':loadingFullscreen}" class="ng-scope ng-hide"><div class="base-loading-layer"><div class="loader-outer "><div class="loader-inner line-scale-pulse-out-rapid"><div></div><div></div><div></div><div></div><div></div></div></div></div></div>
+    <div ng-show="global.hint" class="errTipsLayer ng-hide">
+        <div class="errTips ng-binding" ng-bind="global.hint"></div>
+    </div>
+    <div warning-amount=""></div>
+    <!-- ngIf: enterprise_type == 3 && guide -->
+    <!-- ngIf: enterprise_type == 3 --><div class="personal-help ng-scope" click-outside="view.showHelpList = false;" outside-active="view.showHelpList" ng-if="enterprise_type == 3">
+        <div class="btn-help has-unread" ng-click="toggleHelpList()" ng-class="{'has-unread':log_unread}"><i class="bdp-icon ico-help-white"></i></div>
+        <div class="tooltip-help">
+            帮助与咨询
+        </div>
+        <div class="help-list dropdown-wrap ng-hide" ng-show="view.showHelpList">
+            <li class="dropdown-item ng-scope" ng-click="helpLog('新手引导');" novice-guide="">新手引导</li>
+            <li class="dropdown-item" ng-click="helpLog('用户社区');"><a class="display-block" target="_blank" href="https://bbs.bdp.cn/portal.php">用户社区</a></li>
+            <li class="dropdown-item" ng-click="helpLog('教学视频');"><a class="display-block" target="_blank" href="/instructional_video.html">教学视频</a></li>
+            <li class="dropdown-item" ng-click="helpLog('帮助中心');"><a class="display-block" target="_blank" href="https://book.bdp.cn">帮助中心</a></li>
+            <!-- ngIf: permision.newFeatures --><li class="dropdown-item ng-scope has-unread" ng-click="helpLog('更新日志');readNewFeatures()" ng-class="{'has-unread':log_unread}" ng-if="permision.newFeatures"><a class="display-block" target="_blank" href="/update.html">产品更新日志</a></li><!-- end ngIf: permision.newFeatures -->
+            <!-- ngIf: meiqiaInitSuccess -->
+            <!-- ngIf: meiqiaInitSuccess -->
+        </div>
+    </div><!-- end ngIf: enterprise_type == 3 -->
+    <!-- start polyfill -->
+    <script type="text/javascript" data-fixed="true">!function(){function t(t){t=t||+new Date;var e=window.performance;if(!e)return console.log("你的浏览器不支持 performance 接口"),{};var n=e.timing,o={};return o.navigationStart=n.navigationStart,o.loadPage=n.loadEventEnd-n.navigationStart,o.onloadTime=t-n.navigationStart,o.domReady=n.domComplete-n.responseEnd,o.redirect=n.redirectEnd-n.redirectStart,o.lookupDomain=n.domainLookupEnd-n.domainLookupStart,o.ttfb=n.responseStart-n.navigationStart,o.request=n.responseEnd-n.requestStart,o.loadEvent=n.loadEventEnd-n.loadEventStart,o.appcache=n.domainLookupStart-n.fetchStart,o.unloadEvent=n.unloadEventEnd-n.unloadEventStart,o.connect=n.connectEnd-n.connectStart,o.whiteScreen=n.domLoading-n.navigationStart,o}function e(){var e=+new Date;setTimeout(function(){var n=t(e);console.log(n),BDPLogger.log("feStatistics",{category:"performance",action:"loading",opt_label:JSON.stringify({log_start_time:n.navigationStart,dns_time:n.lookupDomain,tcp_time:n.connect,request_time:n.request,dom_ready_time:n.domReady,onload_time:n.onloadTime,white_screen_time:n.whiteScreen,redirect_time:n.redirect})})},0)}document.addEventListener?window.addEventListener("load",e,!1):window.attachEvent("onload",e)}()</script>
+    <!--start plugins-->
+    <!-- <script src="./static/js/lib/angular-dragdrop/angular-dragdrop.js"></script> -->
+    <!--end plugins-->
+    <reference path="../globals.d.ts">
+        <!-- start dashboard -->
+        <!--start custom js-->
+        <!-- end dashboard-->
+        <!--admin Start-->
+        <!--admin end -->
+        <!--end custom js-->
+        <!--seperate tools-->
+        <!--end seperate tools-->
+
+        <script type="text/javascript" charset="utf-8" src="//m1.bdp.cn/static/pkg/jquery-angular-lib_0a73f80.js"></script>
+        <script type="text/javascript" charset="utf-8" src="//m1.bdp.cn/static/pkg/auto_combine_ce72e_d14fdef.js"></script>
+        <script type="text/javascript" charset="utf-8" src="//m1.bdp.cn/zh/static/pkg/app_3261edf5.js"></script>
+        <script type="text/javascript" charset="utf-8" src="//m1.bdp.cn/static/pkg/directives_c56ab66.js"></script>
+        <script type="text/javascript">window.user={};for(var partnerLogin="",splits=document.cookie.split(";"),i=0,_len=splits.length;i<_len;i++){var qps=splits[i].split("=");/token/.test(qps[0])&&qps[0].indexOf("token_")<0&&(user.token=qps[1]),/partner_login/.test(qps[0])&&(partnerLogin=qps[1])}void 0!=user.token&&""!=user.token||(partnerLogin?window.location.href="https://"+partnerLogin+".bdp.cn":(window.location.href="login.html",BDPLogger.log("feStatistics",{category:"user_interact",action:"api_logout",opt_label:JSON.stringify({options:"invalidToken"})})));var ua=navigator.userAgent,ie;/MSIE/.test(ua)&&(ie=/MSIE (.{3})/.exec(ua),ie[1]<=8&&(location.href="/login.html"))</script>
+
+        <script type="text/javascript">var customConfig=!1;customConfig&&(customConfig=JSON.parse(customConfig),customConfig.HTML_TITLE&&(document.getElementsByTagName("title")[0].innerHTML=customConfig.HTML_TITLE),customConfig.SHOW_LOGIN_APP&&(document.getElementsByClassName("logo-link")[0].href=""),customConfig.LOGO_PATH&&(document.getElementsByClassName("logo-link")[0].style.backgroundImage='url("'+customConfig.LOGO_PATH+'")',document.getElementsByClassName("logo")[0].style.backgroundColor="transparent"))</script>
+
+
+        <script type="text/javascript">!function(){function e(){var r;a<6?r=10*a+"min":(r=(a-6)/2+1+"h",n=18e5),BDPLogger.log("feStatistics",{category:"performance",action:"usedJSHeapSize",opt_label:r,opt_value:performance.memory.usedJSHeapSize}),a++,a<15&&setTimeout(e,n)}var n=6e5;window.performance&&performance.memory&&setTimeout(e,n);var a=1}(),function(e){var n=e.sdk_url,a=e.name,r=window,t=document,o="script",c=null,i=null,s=1*new Date;r.__BDP_DATA_ANALYTIC__=a,r[a]=r[a]||function(e){return function(){(r[a]._q=r[a]._q||[]).push([e,arguments])}};for(var m=["track","quick","register","registerPage","registerOnce"],u=0;u<m.length;u++)r[a][m[u]]=r[a].call(null,m[u]);r[a]._t||(c=t.createElement(o),i=t.getElementsByTagName("head")[0],c.async=0,c.src=n+"?_t="+s,i.appendChild(c),r[a]._t=1*new Date,r[a].para=e)}({sdk_url:"//sdk.bdp.cn/bdpa-sdk-js.js",name:"bdpa",token:"anh5OWt2cgB4cmgBfXBRWxIMMwUUDC1danAVXGh3XF14A2sBbmFRbxELICIFDXUNigAAAA==",debug_mode:!1}),bdpa.register({ver:1804162612})</script>
+
+
+    </reference>
+
+    <input id="textAngular-editableFix-010203040506070809" class="ta-hidden-input" aria-hidden="true" unselectable="on" tabindex="-1" style="width: 1px; height: 1px; border: 0px; margin: 0px; padding: 0px; position: absolute; top: -10000px; left: -10000px; opacity: 0; overflow: hidden;"><span class="gc-theme-version gc-selection" id="gcDummyElement" style="display: none;"></span><span class="gc-theme-version ui-widget-header ui-state-default wijmoThemeHelper btn-default" style="display: none;"></span><span class="gc-theme-version ui-widget-content wijmoThemeHelper btn-default" style="display: none;"></span><span class="gc-theme-version ui-state-hover wijmoThemeHelper btn-primary" style="display: none;"></span><span class="gc-theme-version ui-state-highlight wijmoThemeHelper btn-warning" style="display: none;"></span><textarea aria-hidden="true" tabindex="-1" style="position: absolute; top: -999px; right: auto; bottom: auto; left: 0px; overflow: hidden; box-sizing: content-box; padding: 0px; word-wrap: break-word; border: 0px; font-family: &quot;PingFang SC&quot;, &quot;Helvetica Neue&quot;, Helvetica, STHeitiSC-Light, &quot;Microsoft yahei&quot;, Tahoma, Verdana, Arial, sans-serif; font-size: 12px; font-weight: 400; font-style: normal; letter-spacing: normal; line-height: 19.2px; text-transform: none; word-spacing: 0px; text-indent: 0px; min-height: 0px !important; height: 0px !important; width: 242px;"></textarea><div class="global-tooltip chart-theme-default display-theme-light display-device-pc" style="top: 282px; left: 632px; display: none;"></div>
+</body>
+</html>

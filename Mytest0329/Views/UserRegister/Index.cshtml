@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <form action="/UserRegister/Index"  method="post">
+            <table>
+                <tr>
+                    <td>
+                        <span>用户名：</span> <input type="text" name="textname" />                       
+                    </td>                   
+                </tr>
+                <tr>
+                    <td>
+                        <span>密码：</span> <input type="password" name="pwname" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit"/>
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+
+    </div>
+    <div>
+        <span>@ViewData["status"]</span>
+    </div>
+</body>
+</html>

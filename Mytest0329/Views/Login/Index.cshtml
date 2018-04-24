@@ -1,0 +1,108 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<!-- saved from url=(0046)http://www.jq22.com/demo/Azrael_login20160830/ -->
+<html lang="en" class="login-content ng-scope" data-ng-app="materialAdmin">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+        .ng-animate.item:not(.left):not(.right) {
+            -webkit-transition: 0s ease-in-out left;
+            transition: 0s ease-in-out left
+        }
+    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>Material Admin</title>
+    <!--
+      作者：561568157@qq.com
+      时间：2016-01-07
+      描述：ICO
+    -->
+    <!-- Vendor CSS -->
+    <link href="./Material Admin_files/material-design-iconic-font.min.css" rel="stylesheet" type="text/css">
+    <!-- CSS -->
+    <link href="./Material Admin_files/app.min.1.css" rel="stylesheet" type="text/css">
+</head>
+<body class="login-content ng-scope" data-ng-controller="loginCtrl as lctrl">
+    <div class="lc-block toggled" id="l-login" data-ng-class="{&#39;toggled&#39;:lctrl.login === 1}">
+        <h1 class="lean">Azrael</h1>
+        <div class="input-group m-b-20">
+            <span class="input-group-addon">
+                <i class="zmdi zmdi-account"></i>
+            </span>
+            <div class="fg-line fg-toggled has-error">
+                <input type="text" class="form-control" placeholder="Username" regex="^\w{3,16}$">
+            </div>
+        </div>
+        <div class="input-group m-b-20">
+            <span class="input-group-addon">
+                <i class="zmdi zmdi-male"></i>
+            </span>
+            <div class="fg-line fg-toggled has-error">
+                <input type="password" class="form-control" placeholder="Password" regex="^\w+">
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="">
+                <i class="input-helper">
+                    保持登录状态
+                </i>
+            </label>
+        </div>
+
+        <a href="http://www.jq22.com/demo/Azrael_login20160830/" class="btn btn-login btn-danger btn-float">
+            <i class="zmdi zmdi-arrow-forward"></i>
+        </a>
+
+        <ul class="login-navigation">
+            <li class="bgm-red" data-ng-click="lctrl.login = 0; lctrl.register = 1">Register</li>
+            <li data-block="#l-forget-password" class="bgm-orange" data-ng-click="lctrl.login = 0; lctrl.forgot = 1">Forgot Password?</li>
+        </ul>
+    </div>
+
+    <!-- ngIf: lctrl.register === 1 -->
+    <!-- ngIf: lctrl.forgot === 1 -->
+
+
+    <script src="./Material Admin_files/jquery.min.js.下载"></script>
+    <script src="./Material Admin_files/jquery.min.js(1).下载"></script>
+    <!-- Angular -->
+    <script src="./Material Admin_files/angular.min.js.下载"></script>
+    <script src="./Material Admin_files/angular-resource.min.js.下载"></script>
+    <script src="./Material Admin_files/angular-animate.min.js.下载"></script>
+
+
+    <!-- Angular Modules -->
+    <script src="./Material Admin_files/angular-ui-router.min.js.下载"></script>
+    <script src="./Material Admin_files/loading-bar.js.下载"></script>
+    <script src="./Material Admin_files/ocLazyLoad.min.js.下载"></script>
+    <script src="./Material Admin_files/ui-bootstrap-tpls.min.js.下载"></script>
+
+    <!-- Common js -->
+    <script src="./Material Admin_files/nouislider.min.js.下载"></script>
+    <script src="./Material Admin_files/ng-table.min.js.下载"></script>
+
+    <!-- Placeholder for IE9 -->
+    <!--[if IE 9 ]>
+        <script src="js/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+    <![endif]-->
+    <!-- App level -->
+    <script src="./Material Admin_files/app.js.下载"></script>
+    <script src="./Material Admin_files/main.js.下载"></script>
+    <script src="./Material Admin_files/ui-bootstrap.js.下载"></script>
+
+
+    <!-- Template Modules -->
+    <script src="./Material Admin_files/form.js.下载"></script>
+</body>
+</html>

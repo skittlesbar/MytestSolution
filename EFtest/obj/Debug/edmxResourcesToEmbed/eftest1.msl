@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MVCTestModelStoreContainer" CdmEntityContainer="MVCTestEntities">
+    <EntitySetMapping Name="studentsInfo">
+      <EntityTypeMapping TypeName="MVCTestModel.studentsInfo">
+        <MappingFragment StoreEntitySet="studentsInfo">
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="age" ColumnName="age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="teachers">
+      <EntityTypeMapping TypeName="MVCTestModel.teachers">
+        <MappingFragment StoreEntitySet="teachers">
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="session" ColumnName="session" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
