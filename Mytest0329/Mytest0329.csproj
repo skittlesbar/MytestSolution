@@ -199,6 +199,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1EF.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClassifyData.cs" />
     <Compile Include="Models\metaModel.cs" />
     <Compile Include="Models\textbox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

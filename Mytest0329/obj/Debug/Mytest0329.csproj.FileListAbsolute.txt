@@ -118,3 +118,4 @@ D:\MytestSolution\Mytest0329\bin\NPOI.OpenXmlFormats.dll
 D:\MytestSolution\Mytest0329\obj\Debug\Mytest0329.csproj.CoreCompileInputs.cache
 D:\MytestSolution\Mytest0329\obj\Debug\Mytest0329.dll
 D:\MytestSolution\Mytest0329\obj\Debug\Mytest0329.pdb
+D:\MytestSolution\Mytest0329\obj\Debug\Mytest0329.csproj.CopyComplete

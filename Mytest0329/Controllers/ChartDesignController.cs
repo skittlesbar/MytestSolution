@@ -1,4 +1,5 @@
 ﻿using Mytest0329.App_Code;
+using Mytest0329.Models;
 using System;
 using System.Web.Mvc;
 
@@ -49,21 +50,21 @@ namespace Mytest0329.Controllers
             return null;
         }
 
-        //[HttpPost]
-        //public JsonResult AddClassify([ModelBinder(typeof JsonBinder<Classify>))]Classify cfy)
-        //{
-        //    var data = new JsonResult();
-        //    try
-        //    {
-        //        String name = cfy.name;
-        //        object ans = DesignHelper.MaintainClassify(name: name);
-        //        data.Data = ans;
-        //    }
-        //    catch
-        //    {
-        //        data.Data = new object[] { new { status = "0x10" } };
-        //    }
-        //    return data;
-        //}
+        [HttpPost]
+        public JsonResult AddClassify([ModelBinder(typeof(JsonBinder<ClassifyData>))]ClassifyData cfy)
+        {
+            var data = new JsonResult();
+            try
+            {
+                String name = cfy.name;
+                object ans = DesignHelper.MaintainClassify(name: name);
+                data.Data = ans;
+            }
+            catch
+            {
+                data.Data = new object[] { new { status = "0x10" } };
+            }
+            return data;
+        }
     }
 }
