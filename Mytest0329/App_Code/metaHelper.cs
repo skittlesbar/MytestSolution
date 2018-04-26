@@ -10,7 +10,7 @@ namespace Mytest0329.App_Code
     public static class MetaHelper
     {
         public static String metaConn = @"data source = @hostname; initial catalog = @db; user id = @id; password = @password";
-
+        
         /// <summary>
         /// 维护元数据库的数据库表
         /// </summary>

@@ -19,6 +19,7 @@ namespace Mytest0329.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public JsonResult Index(Int32 tid)
         {
             tid = 2;//从后台获取
@@ -41,5 +42,28 @@ namespace Mytest0329.Controllers
             data.Data = ans;
             return data;
         }
+
+        [HttpGet]
+        public JsonResult Classify()
+        {
+            return null;
+        }
+
+        //[HttpPost]
+        //public JsonResult AddClassify([ModelBinder(typeof JsonBinder<Classify>))]Classify cfy)
+        //{
+        //    var data = new JsonResult();
+        //    try
+        //    {
+        //        String name = cfy.name;
+        //        object ans = DesignHelper.MaintainClassify(name: name);
+        //        data.Data = ans;
+        //    }
+        //    catch
+        //    {
+        //        data.Data = new object[] { new { status = "0x10" } };
+        //    }
+        //    return data;
+        //}
     }
 }

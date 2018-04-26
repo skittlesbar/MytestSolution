@@ -1,16 +1,39 @@
 ﻿<style>
+    .side-user {
+        height: 30px;
+    }
+
+    .oc-left {
+        position: absolute;
+        top: 4px;
+        font-size: 20px;
+    }
+
     li {
         list-style: none;
     }
+
     .oc-left {
         line-height: 32px;
         font-weight: 700;
         display: inline-block
     }
+
     .oc-right {
-        position:absolute;
-        right: 12px;
-        top: 4px;
+        position: absolute;
+        right: 0px;
+        top: 8px;
+        font-size: 16px;
+    }
+
+    .oc-right-top {
+        display: inline-block;
+        width: 20px;
+    }
+
+    .layui-layer-ocean {
+        top: 24%;
+        left: 14%;
     }
 </style>
 
@@ -22,20 +45,24 @@
                 <div class="side-user">
                     <p class="oc-left">报表</p>
                     <div class="oc-right">
-                        <div class="oc-add">
-                            <a href="javascript:void(0)"><i class="fa fa-plus"></i></a>
-                            <ul>
-                                <li>添加分类</li>
-                                <li>添加报表</li>
-                            </ul>
-                        </div>
-                        <div class="oc-op">
-                            <a href="javascript:void(0)"><i class="fa fa-ellipsis-v"></i></a>
-                            <ul>
-                                <li>添加分类</li>
-                                <li>添加报表</li>
-                            </ul>
-                        </div>
+                        <label href="javascript:void(0)" class="ul-show">
+                            <div class="oc-right-top">
+                                <i class="fa fa-plus"></i>
+                                <ul style="display:none">
+                                    <li><span class="oc-add oc-all-sheets" data-toggle="modal" data-target="#oc-model-add-fl" href="javascript:void(0)">添加分类</span></li>
+                                    <li><span class="oc-add oc-all-sheet" data-toggle="modal" data-target="#oc-model-add" href="javascript:void(0)">添加报表</span></li>
+                                </ul>
+                            </div>
+                        </label>
+                        <label href="javascript:void(0)" class="ul-show">
+                            <div class="oc-right-top">
+                                <i class="fa fa-ellipsis-v"></i>
+                                <ul style="display:none">
+                                    <li><span class="oc-add oc-close-all" href="javascript:void(0)">收起全部</span></li>
+                                    <li><span class="oc-add oc-open-all" href="javascript:void(0)">展开全部</span></li>
+                                </ul>
+                            </div>
+                        </label>
                     </div>
                 </div>
                 <ul class="cl-vnavigation">
@@ -98,42 +125,183 @@
     </div>
 </div>
 
-<script>
+<div class="modal fade" id="oc-model-add-fl" tabindex="-1" role="dialog" aria-hidden='true' data-backdrop='static' aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="input01">分类名称</label>
+                            <div class="controls">
+                                <input type="text" id="oc-model-fl-name" placeholder="请填写添加的名称" class="input-xlarge">
+                                <p class="help-block">不允许有特殊字符哦</p>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="oc-model-add-submit" class="btn btn-primary">确认添加</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="oc-model-add" tabindex="-1" role="dialog" aria-hidden='true' data-backdrop='static' aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="input01">报表名称</label>
+                            <div class="controls">
+                                <input type="text" placeholder="请填写添加的名称" class="input-xlarge">
+                                <p class="help-block">不允许有特殊字符哦</p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">所属分类</label>
+                            <div class="controls">
+                                <select class="input-xlarge" id="select_fl">
+                                </select>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-        //  加载左侧边栏
-        //从控制器获取json数据
+@Scripts.Render("~/bundles/layer")
+<script>
     $.ajax({
         url: "/ChartDesign/Left",
         type: "GET",
         //接口访问出错执行error属性中定义的函数
         error: function () {
-            alert('error');
+            console.log('error');
         },
+        async:true,
         //接口访问成功后执行success属性中定义的函数
         success: function (objs) {
             var html = "";
             for (obj in objs) {
                 var datas = objs[obj][0].data;
-                html += '<li class="parent" data-id="' + objs[obj][0].pid + '"> <a href = "#" > <i class="fa fa-folder-o"></i> <span>' + objs[obj][0].pname + '</span></a><ul class="sub-menu">';
+                html += '<li class="parent" data-id="' + objs[obj][0].pid + '"> <a href = "#" > <i class="fa fa-folder-o"></i> <span>' + encodeHTML(objs[obj][0].pname) + '</span></a><ul class="sub-menu">';
                 for (data in datas) {
-                    html += '<li data-id="' + datas[data][0].sid + '"><a>' + datas[data][0].sname + '</a></li>';
+                    html += '<li data-id="' + datas[data][0].sid + '"><a>' + encodeHTML(datas[data][0].sname) + '</a></li>';
                 }
                 html += "</ul></li >";
             }
             $(".cl-vnavigation").html(html);
-            addClickEvent();
+            addIconClinet();
         }
     });
-    function addClickEvent() {
-        $('.parent').click(function () {
-            var $_this = $(this);
-            if ($_this.children('a').children('.fa-folder-open-o').length > 0) {
-                $_this.children('a').children('.fa-folder-open-o').removeClass("fa-folder-open-o").addClass("fa-folder-o");
-            }
-            else {
-                $('.parent>a>.fa-folder-open-o').removeClass("fa-folder-open-o").addClass("fa-folder-o");
-                $_this.children('a').children('.fa-folder-o').removeClass("fa-folder-o").addClass("fa-folder-open-o");
-            }
+    function addIconClinet() {
+        $(".ul-show").click(function () {
+            $this = $(this);
+            var $HTML = $this.children(".oc-right-top").children("ul").prop("outerHTML");
+            layer.open({
+                type: 1,
+                skin: 'layui-layer-ocean', //样式类名
+                shade: 0 ,
+                closeBtn: 0, //不显示关闭按钮
+                title:0,//不显示title
+                anim: 2,
+                shadeClose: true, //开启遮罩关闭
+                content: $HTML.replace("display:none","")
+            });
+            addOcEvent();
         });
+    }
+    function addOcEvent() {
+        $(".oc-add").click(function () {
+            $(".layui-layer").remove();
+        });
+        $('.oc-close-all').click(function () {
+            $('.parent>ul').css('display', 'none');
+            $('.parent>a>.fa-folder-open-o').removeClass("fa-folder-open-o").addClass("fa-folder-o");
+        });
+        $('.oc-open-all').click(function () {
+            $('.parent>ul').css('display', 'block');
+            $('.parent>a>.fa-folder-o').removeClass("fa-folder-o").addClass("fa-folder-open-o");
+        });
+        $(".oc-all-sheet").click(function () {
+            var options = '<option value="0">-----</option>';
+            var li = $(".cl-vnavigation>li");
+            //ajax读取数据
+            li.each(function () {
+                options += '<option value="' + $(this).attr("data-id") + '">' + $(this).find('span').text() + '</option>';
+            });
+            $('#oc-model-add').on('show.bs.modal', function (event) {
+                var modal = $(this)
+                modal.find('.modal-title').text('添加报表')
+                modal.find("#select_fl").html(options)
+            });
+            //$('#oc-model-add').modal('show');
+        });
+        $(".oc-all-sheets").click(function () {
+            $('#oc-model-add-fl').on('show.bs.modal', function (event) {
+                var modal = $(this)
+                modal.find('.modal-title').text('添加分类')
+            });
+            //$.ajax({
+            //    url: "/ChartDesign/Left",
+            //    type: "POST",
+            //    //接口访问出错执行error属性中定义的函数
+            //    error: function () {
+            //        console.log('error');
+            //    },
+            //    async: true,
+            //    //接口访问成功后执行success属性中定义的函数
+            //    success: function (objs) {
+            //        var html = "";
+            //        //数据提交至服务器
+            //        //添加左侧边栏中的数据
+            //        //addClickEvent();
+            //        addIconClinet();
+            //    }
+            //});
+        })
+        $("#oc-model-add-submit").click(function () {
+            //获取分类名称
+            var name = $("#oc-model-fl-name").val();
+            //发送到服务器
+            $('#oc-model-add-fl').modal('hide');
+            $.ajax({
+                url: "/ChartDesign/AddClassify",
+                type: "POST",
+                data: JSON.stringify({ 'name': name }),
+                contentType: 'json',
+                //接口访问出错执行error属性中定义的函数
+                async: true,
+                //接口访问成功后执行success属性中定义的函数
+                success: function (objs) {
+                    console.log(objs);
+                    $('.cl-vnavigation').append("<li class='parent'><a href='#'><i class='fa fa-folder-o'></i> <span>" + encodeHTML(name) + "</span></a></li>");
+                }
+            });
+        })
+        //添加搜索功能
+    }
+
+    //实现HTML转义，用来防御XSS
+    function encodeHTML(html) {
+        return html;
     }
 </script>

@@ -1347,11 +1347,16 @@ var App = function () {
       });
       
       $(".cl-vnavigation").delegate(".parent > a","click",function(e){
-        $(".cl-vnavigation .parent.open > ul").not($(this).parent().find("ul")).slideUp(300, 'swing',function(){
-           $(this).parent().removeClass("open");
-        });
-        
-        var ul = $(this).parent().find("ul");
+        //$(".cl-vnavigation .parent.open > ul").not($(this).parent().find("ul")).slideUp(300, 'swing',function(){
+            
+          //});
+          if ($(this).children('i').hasClass('fa-folder-open-o')) {
+              $(this).children('i').removeClass("fa-folder-open-o").addClass("fa-folder-o");
+          }
+          else {
+              $(this).children('i').removeClass("fa-folder-o").addClass("fa-folder-open-o");
+          }
+          var ul = $(this).parent().find("ul");
         ul.slideToggle(300, 'swing', function () {
           var p = $(this).parent();
           if(p.hasClass("open")){

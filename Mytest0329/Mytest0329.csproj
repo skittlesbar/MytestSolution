@@ -163,6 +163,7 @@
     <Compile Include="App_Code\DesignHelper.cs" />
     <Compile Include="App_Code\ExcelHelper.cs" />
     <Compile Include="App_Code\json.cs" />
+    <Compile Include="App_Code\JsonBinder.cs" />
     <Compile Include="App_Code\JSONHelper.cs" />
     <Compile Include="App_Code\JudgeDataType.cs" />
     <Compile Include="App_Code\Excel2DT.cs" />
@@ -484,6 +485,7 @@
     <Content Include="ui\layui\lay\modules\jquery.js" />
     <Content Include="ui\layui\lay\modules\laydate.js" />
     <Content Include="ui\layui\lay\modules\layedit.js" />
+    <Content Include="ui\layui\lay\modules\layer-oc.js" />
     <Content Include="ui\layui\lay\modules\layer.js" />
     <Content Include="ui\layui\lay\modules\laypage.js" />
     <Content Include="ui\layui\lay\modules\laytpl.js" />

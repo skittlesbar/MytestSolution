@@ -11,7 +11,7 @@ namespace Mytest0329.App_Code
     public static class SqlHelper
     {
         public static string strConn = @"data source = @hostname initial catalog = @db; user id = @user; password = @pwd";
-
+        
         public static bool StartTran(String sqlStr)
         {
             String sql = "BEGIN TRAN";

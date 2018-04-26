@@ -78,5 +78,21 @@ namespace Mytest0329.App_Code
                 return list.ToArray();
             }
         }
+        public static object MaintainClassify(String name, Int32 id = 0)
+        {
+            String addSql = "INSERT INTO MVCTest.dbo.tb_sheetS(name) values(@name)";
+            String updateSql = "UPDATE MVCTest.dbo.tb_sheets SET name=@name WHERE id=@id";
+            int ans = 0;
+            if (id>0)
+            {
+                ans = SqlHelper.ExecuteNonQuery(updateSql, SqlHelper.strConn, new System.Data.SqlClient.SqlParameter("@name", name), new System.Data.SqlClient.SqlParameter("@id", id));
+            }
+            else
+            {
+                ans = SqlHelper.ExecuteNonQuery(updateSql, SqlHelper.strConn, new System.Data.SqlClient.SqlParameter("@name", name));
+            }
+            if (ans > 0) return new { status="ox01" };
+            else return new { status = "0x00" };
+        }
     }
 }
