@@ -9,8 +9,9 @@ namespace Mytest0329.App_Code
 {
     public static class MetaHelper
     {
-        public static String metaConn = @"data source = @hostname; initial catalog = @db; user id = @id; password = @password";
-        
+        //public static String metaConn = @"data source = @hostname; initial catalog = @db; user id = @id; password = @password";
+        public static string metaConn = @"data source = 192.168.0.104; initial catalog = metadata; user id = wsn; password = Wsn@2145127";
+
         /// <summary>
         /// 维护元数据库的数据库表
         /// </summary>

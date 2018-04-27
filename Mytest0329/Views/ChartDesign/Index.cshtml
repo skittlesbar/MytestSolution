@@ -65,48 +65,12 @@
                         </label>
                     </div>
                 </div>
-                <ul class="cl-vnavigation">
-                    <li class="parent" data-id="1">
-                        <a href="#"><i class="fa fa-folder-o"></i><span>分类一</span></a>
-                        <ul class="sub-menu">
-                            <li data-id="4"><a>Item 4</a></li>
-                            <li data-id="5"><a>Item 5</a></li>
-                        </ul>
-                    </li>
-                    <li class="parent">
-                        <a href="#"><i class="fa fa-folder-open-o"></i><span>UI Elements</span></a>
-                        <ul class="sub-menu" style="display: block;">
-                            <li data-id="4"><a href="ui-elements.html">General</a></li>
-                            <li data-id="4"><a href="ui-buttons.html">Buttons</a></li>
-                        </ul>
-                    </li>
-                    <li class="parent">
-                        <a href="#"><i class="fa fa-folder-o"></i><span>Forms</span></a>
-                        <ul class="sub-menu">
-                            <li data-id="4"><a href="ui-elements.html">General</a></li>
-                            <li data-id="4"><a href="ui-buttons.html">Buttons</a></li>
-                        </ul>
-                    </li>
-                    <li class="parent">
-                        <a href="#"><i class="fa fa-folder-o"></i><span>Tables</span></a>
-                        <ul class="sub-menu">
-                            <li data-id="4"><a href="ui-elements.html">General</a></li>
-                            <li data-id="4"><a href="ui-buttons.html">Buttons</a></li>
-                        </ul>
-                    </li>
-                    <li class="parent">
-                        <a href="#"><i class="fa fa-folder-o"></i><span>Maps</span></a>
-                        <ul class="sub-menu">
-                            <li data-id="4"><a href="ui-elements.html">General</a></li>
-                            <li data-id="4"><a href="ui-buttons.html">Buttons</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <ul class="cl-vnavigation"></ul>
             </div>
             <div class="pane" style="display: none;"><div class="slider" style="height: 497px; top: 0px;"></div></div>
         </div>
         <div class="text-right collapse-button" style="padding:7px 9px;">
-            <input type="text" class="form-control search" placeholder="Search...">
+            <input type="text" class="oc-search form-control search" placeholder="Search...">
             <button id="sidebar-collapse" class="btn btn-default" style=""><i style="color:#fff;" class="fa fa-angle-left"></i></button>
         </div>
     </div>
@@ -129,7 +93,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="oc-model-fl-cancle close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="exampleModalLabel"></h4>
             </div>
             <div class="modal-body">
@@ -146,8 +110,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" id="oc-model-add-submit" class="btn btn-primary">确认添加</button>
+                <button type="button" class="oc-model-fl-cancle btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="oc-model-fl-add-submit" class="btn btn-primary">确认添加</button>
             </div>
         </div>
     </div>
@@ -156,7 +120,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="oc-model-cancle close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="exampleModalLabel"></h4>
             </div>
             <div class="modal-body">
@@ -180,8 +144,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send message</button>
+                <button type="button" class="oc-model-cancle btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="oc-model-add-submit" class="btn btn-primary">Send message</button>
             </div>
         </div>
     </div>
@@ -202,16 +166,23 @@
             var html = "";
             for (obj in objs) {
                 var datas = objs[obj][0].data;
-                html += '<li class="parent" data-id="' + objs[obj][0].pid + '"> <a href = "#" > <i class="fa fa-folder-o"></i> <span>' + encodeHTML(objs[obj][0].pname) + '</span></a><ul class="sub-menu">';
-                for (data in datas) {
-                    html += '<li data-id="' + datas[data][0].sid + '"><a>' + encodeHTML(datas[data][0].sname) + '</a></li>';
+                if (datas != null) {
+                    html += '<li class="parent" data-id="' + objs[obj][0].pid + '"> <a href = "#" > <i class="fa fa-folder-o"></i> <span>' + encodeHTML(objs[obj][0].pname) + '</span></a><ul class="sub-menu">';
+                    for (data in datas) {
+                        html += '<li data-id="' + datas[data][0].sid + '"><a>' + encodeHTML(datas[data][0].sname) + '</a></li>';
+                    }
+                    html += "</ul></li >";
                 }
-                html += "</ul></li >";
+                else {
+                    html += '<li class="parent" data-id="' + objs[obj][0].pid + '"> <a href = "#" > <i class="fa fa-folder-o"></i> <span>' + encodeHTML(objs[obj][0].pname) + '</span></a>';
+                    html += "</li >";
+                }
             }
             $(".cl-vnavigation").html(html);
             addIconClinet();
         }
     });
+    
     function addIconClinet() {
         $(".ul-show").click(function () {
             $this = $(this);
@@ -278,7 +249,8 @@
             //    }
             //});
         })
-        $("#oc-model-add-submit").click(function () {
+        $("#oc-model-fl-add-submit").on('click', function () {
+            $("#oc-model-fl-add-submit").off('click');
             //获取分类名称
             var name = $("#oc-model-fl-name").val();
             //发送到服务器
@@ -292,14 +264,45 @@
                 async: true,
                 //接口访问成功后执行success属性中定义的函数
                 success: function (objs) {
-                    console.log(objs);
-                    $('.cl-vnavigation').append("<li class='parent'><a href='#'><i class='fa fa-folder-o'></i> <span>" + encodeHTML(name) + "</span></a></li>");
+                    var code = objs.status;
+                    if (code === '0x00') {
+                        $('.cl-vnavigation').append("<li class='parent'><a href='#'><i class='fa fa-folder-o'></i> <span>" + encodeHTML(name) + "</span></a></li>");
+                    }
+                    else {
+                        alert(objs.msg);
+                    }
                 }
             });
-        })
+        })        
         //添加搜索功能
     }
-
+    $(".oc-model-fl-cancle").on('click', function () {
+        $("#oc-model-fl-add-submit").off('click');
+    })
+    $(".oc-model-cancle").on('click', function () {
+        $("#oc-model-add-submit").off('click');
+    })
+    $(".oc-search").on("keyup", function () {
+        var text = $(".oc-search").val();
+        if (text != '') {
+            var lis = $(".cl-vnavigation>li");
+            lis.each(function () {
+                $(this).children('ul').children('li').each(function (li) {
+                    var value = $(this).children('a').text();
+                    if (value.indexOf(text)>=0) {
+                        $(this).closest('ul').css('display', 'block');
+                        if ($(this).closest('li.parent').hasClass('open')) {
+                            return false
+                        }
+                        else {
+                            $(this).closest('.parent').children('a').click();
+                            return false
+                        }
+                    }
+                });
+            });
+        }
+    })
     //实现HTML转义，用来防御XSS
     function encodeHTML(html) {
         return html;

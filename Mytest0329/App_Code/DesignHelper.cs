@@ -40,7 +40,7 @@ namespace Mytest0329.App_Code
         }
         public static object ReadSheetLeft()
         {
-            String sql = "SELECT a.id, a.name FROM MVCTest.dbo.tb_sheets AS a ORDER BY a.order_id";
+            String sql = "SELECT a.id, a.name FROM MVCTest.dbo.tb_sheets AS a ORDER BY a.id";
             DataTable dt = SqlHelper.ReadTable(sql, SqlHelper.strConn);
             if(dt == null || dt.Rows.Count == 0)
             {
@@ -89,10 +89,10 @@ namespace Mytest0329.App_Code
             }
             else
             {
-                ans = SqlHelper.ExecuteNonQuery(updateSql, SqlHelper.strConn, new System.Data.SqlClient.SqlParameter("@name", name));
+                ans = SqlHelper.ExecuteNonQuery(addSql, SqlHelper.strConn, new System.Data.SqlClient.SqlParameter("@name", name));
             }
-            if (ans > 0) return new { status="ox01" };
-            else return new { status = "0x00" };
+            if (ans > 0) return new { status="0x00" };
+            else return new { status = "0x01", msg="不允许插入重复的数据" };
         }
     }
 }

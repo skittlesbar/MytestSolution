@@ -57,12 +57,19 @@ namespace Mytest0329.Controllers
             try
             {
                 String name = cfy.name;
-                object ans = DesignHelper.MaintainClassify(name: name);
-                data.Data = ans;
+                if(name != "")
+                {
+                    object ans = DesignHelper.MaintainClassify(name: name);
+                    data.Data = ans;
+                }
+                else
+                {
+                    data.Data = new { status = "0x03", msg = "数据不能为空" };
+                }
             }
             catch
             {
-                data.Data = new object[] { new { status = "0x10" } };
+                data.Data = new { status = "0x02", msg="传入数据的格式不正确" };
             }
             return data;
         }
